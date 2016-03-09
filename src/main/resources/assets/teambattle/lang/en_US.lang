@@ -1,0 +1,37 @@
+itemGroup.teambattletab=§4Teambattle§r
+
+tile.teambattleore.name=§9Teambattle Ore§r
+tooltip.tile.teambattleore=Needed for all the other things!
+
+item.teambattleingotraw.name=§9Teambattle Raw Ingot§r
+tooltip.item.teambattleingotraw=Useless without a diamond.
+
+item.teambattleingot.name=§9Teambattle Ingot§r
+tooltip.item.teambattleingot=Base material!
+
+item.teambattlesword.name=§9Teambattle Sword§r
+tooltip.item.teambattlesword=Overpowered!
+
+item.teambattlepickaxe.name=§9Teambattle Pickaxe§r
+tooltip.item.teambattlepickaxe=Makes farming better!
+
+item.teambattleshovel.name=§9Teambattle Shovel§r
+tooltip.item.teambattleshovel=Just a fast shovel with nearly#break#unlimited durability!
+
+item.teambattlehelmet.name=§9Teambattle Helmet§r
+tooltip.item.teambattlehelmet=Epic!
+
+item.teambattlechestplate.name=§9Teambattle Chestplate§r
+tooltip.item.teambattlechestplate=Incredible!
+
+item.teambattleleggings.name=§9Teambattle Leggings§r
+tooltip.item.teambattleleggings=Better than epic!
+
+item.teambattleboots.name=§9Teambattle Boots§r
+tooltip.item.teambattleboots=Epic!
+
+item.teambattlebow.name=§9Teambattle Bow§r
+tooltip.item.teambattlebow=Nice sharp shooter!
+
+item.teambattlebackpack.name=§9Teambattle Backpack§r
+tooltip.item.teambattlebackpack=Put all your stuff in here!

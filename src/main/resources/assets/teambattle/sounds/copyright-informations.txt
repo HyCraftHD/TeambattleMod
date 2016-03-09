@@ -1,0 +1,5 @@
+teambattleore.ogg:
+  by: Spectre_of_Pain
+  url: https://www.freesound.org/people/Spectre_of_Pain/
+  sound: https://www.freesound.org/people/Spectre_of_Pain/sounds/338134/
+  license: http://creativecommons.org/licenses/by/3.0/
