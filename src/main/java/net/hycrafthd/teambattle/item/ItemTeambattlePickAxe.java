@@ -55,23 +55,25 @@ public class ItemTeambattlePickAxe extends ItemPickaxe {
 			}
 		}
 
-		if (playermp.worldObj.getBlockState(pos.up()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.up()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.up()).getBlock())) {
-			this.breaking(pos.up(), playermp);
-		}
-		if (playermp.worldObj.getBlockState(pos.down()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.down()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.down()).getBlock())) {
-			this.breaking(pos.down(), playermp);
-		}
-		if (playermp.worldObj.getBlockState(pos.north()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.north()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.north()).getBlock())) {
-			this.breaking(pos.north(), playermp);
-		}
-		if (playermp.worldObj.getBlockState(pos.south()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.south()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.south()).getBlock())) {
-			this.breaking(pos.south(), playermp);
-		}
-		if (playermp.worldObj.getBlockState(pos.west()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.west()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.west()).getBlock())) {
-			this.breaking(pos.west(), playermp);
-		}
-		if (playermp.worldObj.getBlockState(pos.east()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.east()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.east()).getBlock())) {
-			this.breaking(pos.east(), playermp);
+		if (block instanceof BlockRedstoneOre || block instanceof BlockOre || blocks.contains(block)) {
+			if (playermp.worldObj.getBlockState(pos.up()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.up()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.up()).getBlock())) {
+				this.breaking(pos.up(), playermp);
+			}
+			if (playermp.worldObj.getBlockState(pos.down()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.down()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.down()).getBlock())) {
+				this.breaking(pos.down(), playermp);
+			}
+			if (playermp.worldObj.getBlockState(pos.north()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.north()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.north()).getBlock())) {
+				this.breaking(pos.north(), playermp);
+			}
+			if (playermp.worldObj.getBlockState(pos.south()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.south()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.south()).getBlock())) {
+				this.breaking(pos.south(), playermp);
+			}
+			if (playermp.worldObj.getBlockState(pos.west()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.west()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.west()).getBlock())) {
+				this.breaking(pos.west(), playermp);
+			}
+			if (playermp.worldObj.getBlockState(pos.east()).getBlock() instanceof BlockRedstoneOre || playermp.worldObj.getBlockState(pos.east()).getBlock() instanceof BlockOre || blocks.contains(playermp.worldObj.getBlockState(pos.east()).getBlock())) {
+				this.breaking(pos.east(), playermp);
+			}
 		}
 	}
 

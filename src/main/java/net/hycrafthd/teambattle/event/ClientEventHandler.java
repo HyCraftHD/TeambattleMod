@@ -59,7 +59,7 @@ public class ClientEventHandler {
 
 	@SubscribeEvent
 	public void onTick(TickEvent event) {
-		Minecraft mc = Minecraft.getMinecraft();
+		Minecraft mc = Minecraft.getMinecraft();	
 		if (mc.currentScreen != null && mc.currentScreen instanceof GuiContainer) {
 			GuiContainer container = (GuiContainer) mc.currentScreen;
 			if (Keyboard.isKeyDown(ClientProxy.craftinggui.getKeyCode())) {
