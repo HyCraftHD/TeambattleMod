@@ -14,6 +14,10 @@ public class CommonProxy {
 	}
 
 	// Client Stuff
+	public void registerKeybinding() {
+	}
+
+	// Client Stuff
 	public int getColor() {
 		return 0;
 	}
