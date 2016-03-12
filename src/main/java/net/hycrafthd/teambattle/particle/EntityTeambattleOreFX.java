@@ -34,9 +34,6 @@ public class EntityTeambattleOreFX extends EntityFX {
 		this.setParticleTextureIndex((int) (Math.random() * 8.0D));
 	}
 
-	/**
-	 * Renders the particle
-	 */
 	public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float p_180434_4_, float p_180434_5_, float p_180434_6_, float p_180434_7_, float p_180434_8_) {
 		float f = ((float) this.particleAge + partialTicks) / (float) this.particleMaxAge;
 		f = 1.0F - f;
@@ -62,9 +59,6 @@ public class EntityTeambattleOreFX extends EntityFX {
 		return j | k << 16;
 	}
 
-	/**
-	 * Gets how bright this entity is.
-	 */
 	public float getBrightness(float partialTicks) {
 		float f = super.getBrightness(partialTicks);
 		float f1 = (float) this.particleAge / (float) this.particleMaxAge;
@@ -72,9 +66,6 @@ public class EntityTeambattleOreFX extends EntityFX {
 		return f * (1.0F - f1) + f1;
 	}
 
-	/**
-	 * Called to update the entity's position/logic.
-	 */
 	public void onUpdate() {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;

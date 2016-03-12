@@ -48,15 +48,15 @@ public class GuiCraftingRecipes extends GuiScreen {
 
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 		RenderHelper.enableGUIStandardItemLighting();
-        GlStateManager.enableRescaleNormal();
-		
+		GlStateManager.enableRescaleNormal();
+
 		this.drawItemStack(stack, i + 124, j + 35);
 
-		 if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
-		 this.drawHoveringText(stack.getTooltip(mc.thePlayer,mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+		if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
+			this.drawHoveringText(stack.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
 			RenderHelper.enableGUIStandardItemLighting();
-	        GlStateManager.enableRescaleNormal();
-		 }
+			GlStateManager.enableRescaleNormal();
+		}
 
 		if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
 			this.drawHoveringText(stack.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
@@ -91,20 +91,15 @@ public class GuiCraftingRecipes extends GuiScreen {
 						break;
 					}
 				}
-<<<<<<< HEAD
 				RenderHelper.enableGUIStandardItemLighting();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-=======
->>>>>>> origin/master
 			}
 		}
 
 	}
 
 	private void drawItemStack(ItemStack stack, int x, int y) {
-		if(stack.getItemDamage() > 15){
-		stack.setItemDamage(0);
+		if (stack.getItemDamage() > 15) {
+			stack.setItemDamage(0);
 		}
 		this.itemRender.renderItemIntoGUI(stack, x, y);
 	}
