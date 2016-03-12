@@ -34,7 +34,6 @@ public class TWorldGenerator implements IWorldGenerator {
 		case 1:
 			end(random, x, z, world);
 			break;
-
 		}
 	}
 

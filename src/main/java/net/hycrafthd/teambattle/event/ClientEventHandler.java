@@ -15,6 +15,7 @@ import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -59,7 +60,7 @@ public class ClientEventHandler {
 
 	@SubscribeEvent
 	public void onTick(TickEvent event) {
-		Minecraft mc = Minecraft.getMinecraft();	
+		Minecraft mc = Minecraft.getMinecraft();
 		if (mc.currentScreen != null && mc.currentScreen instanceof GuiContainer) {
 			GuiContainer container = (GuiContainer) mc.currentScreen;
 			if (Keyboard.isKeyDown(ClientProxy.craftinggui.getKeyCode())) {
@@ -77,6 +78,12 @@ public class ClientEventHandler {
 				}
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerBodyRender(PlayerBodyRenderEvent event) {
+		GlStateManager.rotate(75, -1, 0, 0);
+		GlStateManager.translate(0, -0.5, 1.2);
 	}
 
 }
