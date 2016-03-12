@@ -1,13 +1,19 @@
 package net.hycrafthd.teambattle.event;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import net.hycrafthd.teambattle.item.ItemTeambattleArmor;
+import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
+import net.hycrafthd.teambattle.util.CommonRegistryUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class CommonEventHander {
 
@@ -33,5 +39,32 @@ public class CommonEventHander {
 		}
 
 	}
-
+    
+	@SubscribeEvent
+	public void onCraftingReg(PlayerEvent.ItemCraftedEvent craft){
+		File fl = new File("C:/temp/Recepies.txt");
+		try {
+			fl.createNewFile();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		FileWriter wr;
+		try {
+			wr = new FileWriter(fl);
+		for(CommonGuiRecipe ar : CommonRegistryUtil.shagedrecipes()){
+			wr.write("Recepie" +String.format("%n"));
+			for(ItemStack st : ar.getRecipeInput()){
+			if(st != null){
+            wr.write(String.valueOf(st) + String.format("%n"));
+			}else{
+	        wr.write("null"+String.format("%n"));
+			}
+			}
+			wr.flush();
+		}
+		wr.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

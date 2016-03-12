@@ -67,7 +67,7 @@ public class ClientEventHandler {
 					Slot slot = container.getSlotUnderMouse();
 					if (slot.getStack() != null) {
 						ItemStack stack = slot.getStack();
-						for (CommonGuiRecipe guirecipe : CommonRegistryUtil.getGuirecipes()) {
+						for (CommonGuiRecipe guirecipe : CommonRegistryUtil.shagedrecipes()) {
 							if (guirecipe.getRecipeOutput() != null && guirecipe.getRecipeOutput().isItemEqual(stack)) {
 								mc.displayGuiScreen(new GuiCraftingRecipes(guirecipe.getRecipeOutput(), guirecipe.getRecipeInput(), mc.currentScreen));
 								return;

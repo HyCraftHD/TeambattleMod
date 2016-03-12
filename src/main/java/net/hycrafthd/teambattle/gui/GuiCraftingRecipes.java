@@ -3,7 +3,10 @@ package net.hycrafthd.teambattle.gui;
 import java.io.IOException;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -43,16 +46,21 @@ public class GuiCraftingRecipes extends GuiScreen {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.enableTexture2D();
 		this.mc.getTextureManager().bindTexture(gui);
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
 
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
-
+		RenderHelper.enableGUIStandardItemLighting();
+        GlStateManager.enableRescaleNormal();
+		
 		this.drawItemStack(stack, i + 124, j + 35);
 
 		 if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
 		 this.drawHoveringText(stack.getTooltip(mc.thePlayer,mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+			RenderHelper.enableGUIStandardItemLighting();
+	        GlStateManager.enableRescaleNormal();
 		 }
 
 		if (input != null) {
@@ -93,6 +101,7 @@ public class GuiCraftingRecipes extends GuiScreen {
 						 }
 					}
 				}
+				RenderHelper.enableGUIStandardItemLighting();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -101,6 +110,9 @@ public class GuiCraftingRecipes extends GuiScreen {
 	}
 
 	private void drawItemStack(ItemStack stack, int x, int y) {
+		if(stack.getItemDamage() > 15){
+		stack.setItemDamage(0);
+		}
 		this.itemRender.renderItemIntoGUI(stack, x, y);
 	}
 
