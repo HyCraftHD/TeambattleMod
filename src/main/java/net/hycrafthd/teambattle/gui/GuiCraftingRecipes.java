@@ -35,11 +35,6 @@ public class GuiCraftingRecipes extends GuiScreen {
 	}
 
 	@Override
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-	}
-
-	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
 		this.drawDefaultBackground();
@@ -63,47 +58,45 @@ public class GuiCraftingRecipes extends GuiScreen {
 	        GlStateManager.enableRescaleNormal();
 		 }
 
+		if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
+			this.drawHoveringText(stack.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+		}
+
 		if (input != null) {
-			try {
-				for (int k = 0; k < input.length; k++) {
-					ItemStack current = input[k];
-					if (current != null) {
-						InputRenderType inputrender = InputRenderType.byId(k);
-						
+			for (int k = 0; k < input.length; k++) {
+				ItemStack current = input[k];
+				if (current != null) {
+					InputRenderType inputrender = InputRenderType.byId(k);
 
-						int ix = i + inputrender.getX() + 30;
-						int iy = j + inputrender.getY() + 17;
-						
-						this.drawItemStack(current, ix,iy );
+					int ix = i + inputrender.getX() + 30;
+					int iy = j + inputrender.getY() + 17;
 
-					}
+					this.drawItemStack(current, ix, iy);
+
 				}
-			} catch (Exception ex) {
-				ex.printStackTrace();
 			}
 		}
-		
 
 		if (input != null) {
-			try {
-				for (int k = 0; k < input.length; k++) {
-					ItemStack current = input[k];
-					if (current != null) {
-						InputRenderType inputrender = InputRenderType.byId(k);
-						
+			for (int k = 0; k < input.length; k++) {
+				ItemStack current = input[k];
+				if (current != null) {
+					InputRenderType inputrender = InputRenderType.byId(k);
 
-						int ix = i + inputrender.getX() + 30;
-						int iy = j + inputrender.getY() + 17;
+					int ix = i + inputrender.getX() + 30;
+					int iy = j + inputrender.getY() + 17;
 
-						 if (ix < mouseX && ix + 16 > mouseX && iy < mouseY && iy + 16 > mouseY) {
-						 this.drawHoveringText(current.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips),mouseX, mouseY); 
-						 break;
-						 }
+					if (ix < mouseX && ix + 16 > mouseX && iy < mouseY && iy + 16 > mouseY) {
+						this.drawHoveringText(current.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+						break;
 					}
 				}
+<<<<<<< HEAD
 				RenderHelper.enableGUIStandardItemLighting();
 			} catch (Exception ex) {
 				ex.printStackTrace();
+=======
+>>>>>>> origin/master
 			}
 		}
 

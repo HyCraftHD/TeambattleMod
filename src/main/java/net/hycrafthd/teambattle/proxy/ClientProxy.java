@@ -8,16 +8,23 @@ import org.lwjgl.input.Keyboard;
 import net.hycrafthd.teambattle.TBlocks;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
+import net.hycrafthd.teambattle.entity.EntityHangGlider;
+import net.hycrafthd.teambattle.entity.render.RenderHangglider;
 import net.hycrafthd.teambattle.event.ClientEventHandler;
 import net.hycrafthd.teambattle.particle.EntityTeambattleOreFX;
 import net.hycrafthd.teambattle.util.ClientRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderBlaze;
+import net.minecraft.client.renderer.entity.RenderEntity;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -46,6 +53,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistryUtil.registerModelRenderer(TItems.teambattleleggings);
 		ClientRegistryUtil.registerModelRenderer(TItems.teambattleboots);
 		ClientRegistryUtil.registerModelRenderer(TItems.teambattlebackpack);
+		ClientRegistryUtil.registerModelRenderer(TItems.teambattlehangglider);
 
 	}
 
@@ -62,6 +70,10 @@ public class ClientProxy extends CommonProxy {
 	public void registerKeybinding() {
 		craftinggui = new KeyBinding("keybinding.keycraftinggui", Keyboard.KEY_K, "category.keybinding.teambattle");
 		ClientRegistryUtil.registerKeybinding(craftinggui);
+	}
+
+	public void registerEntityRenders() {
+		ClientRegistryUtil.registerEntityRenderer(EntityHangGlider.class, new RenderHangglider());
 	}
 
 	Color color = null;

@@ -1,9 +1,11 @@
 package net.hycrafthd.teambattle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.hycrafthd.teambattle.proxy.CommonProxy;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
 
 public class TeambattleReference {
 
@@ -18,5 +20,7 @@ public class TeambattleReference {
 
 	@SidedProxy(serverSide = "net.hycrafthd.teambattle.proxy.CommonProxy", clientSide = "net.hycrafthd.teambattle.proxy.ClientProxy", modId = modid)
 	public static CommonProxy proxy = new CommonProxy();
+
+	public static final Logger log = LogManager.getLogger(name);
 
 }

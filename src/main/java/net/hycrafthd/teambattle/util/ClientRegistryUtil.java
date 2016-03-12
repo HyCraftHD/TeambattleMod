@@ -5,6 +5,7 @@ import java.util.List;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -61,7 +62,7 @@ public class ClientRegistryUtil {
 		}
 	}
 
-	public static void registerEntityRenderer(Class<? extends Entity> entityClass, IRenderFactory<Entity> render) {
+	public static void registerEntityRenderer(Class<? extends Entity> entityClass, Render render) {
 		RenderingRegistry.registerEntityRenderingHandler(entityClass, render);
 	}
 

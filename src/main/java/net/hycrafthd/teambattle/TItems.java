@@ -3,6 +3,7 @@ package net.hycrafthd.teambattle;
 import net.hycrafthd.teambattle.item.ItemTeambattleArmor;
 import net.hycrafthd.teambattle.item.ItemTeambattleBackpack;
 import net.hycrafthd.teambattle.item.ItemTeambattleBow;
+import net.hycrafthd.teambattle.item.ItemTeambattleHangglider;
 import net.hycrafthd.teambattle.item.ItemTeambattleIngot;
 import net.hycrafthd.teambattle.item.ItemTeambattlePickAxe;
 import net.hycrafthd.teambattle.item.ItemTeambattleShovel;
@@ -33,6 +34,7 @@ public class TItems {
 	public static Item teambattleboots;
 	
 	public static Item teambattlebackpack;
+	public static Item teambattlehangglider;
 	
 	public TItems() {
 		init();
@@ -54,6 +56,7 @@ public class TItems {
 		teambattleboots = new ItemTeambattleArmor(teambattlearmor, 3).setUnlocalizedName("teambattleboots").setCreativeTab(TeamBattleMod.tab);
 		
 		teambattlebackpack = new ItemTeambattleBackpack().setUnlocalizedName("teambattlebackpack").setCreativeTab(TeamBattleMod.tab);
+		teambattlehangglider = new ItemTeambattleHangglider().setUnlocalizedName("teambattlehangglider").setCreativeTab(TeamBattleMod.tab);
 	}
 
 	private void register() {
@@ -71,6 +74,7 @@ public class TItems {
 		CommonRegistryUtil.registerItem(teambattleboots);
 		
 		CommonRegistryUtil.registerItem(teambattlebackpack);
+		CommonRegistryUtil.registerItem(teambattlehangglider);
 	}
 
 }
