@@ -8,11 +8,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -63,15 +65,7 @@ public class ClientRegistryUtil {
 		RenderingRegistry.registerEntityRenderingHandler(entityClass, render);
 	}
 
-	public static void addTooltip(ItemStack stack, List tooltip) {
-		String tip = I18n.format("tooltip." + stack.getUnlocalizedName());
-		if (!tip.startsWith("tooltip.")) {
-			tooltip.add(EnumChatFormatting.BLUE + tip + EnumChatFormatting.RESET);
-		}
+	public static void registerKeybinding(KeyBinding key) {
+		ClientRegistry.registerKeyBinding(key);
 	}
-
-	public static String getBlockName(Block o) {
-		return o.getUnlocalizedName().replace("tile.", "");
-	}
-
 }

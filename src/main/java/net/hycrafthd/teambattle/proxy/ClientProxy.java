@@ -3,6 +3,8 @@ package net.hycrafthd.teambattle.proxy;
 import java.awt.Color;
 import java.util.Random;
 
+import org.lwjgl.input.Keyboard;
+
 import net.hycrafthd.teambattle.TBlocks;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
@@ -12,13 +14,19 @@ import net.hycrafthd.teambattle.util.ClientRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.resources.model.ModelBakery;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
 	Minecraft mc = Minecraft.getMinecraft();
+
+	public static KeyBinding craftinggui;
 
 	public void registerModels() {
 
@@ -46,6 +54,16 @@ public class ClientProxy extends CommonProxy {
 		effect.registerParticle(42, new EntityTeambattleOreFX.Factory());
 	}
 
+	public void registerEvents() {
+		MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
+		super.registerEvents();
+	}
+
+	public void registerKeybinding() {
+		craftinggui = new KeyBinding("keybinding.keycraftinggui", Keyboard.KEY_K, "category.keybinding.teambattle");
+		ClientRegistryUtil.registerKeybinding(craftinggui);
+	}
+
 	Color color = null;
 
 	public void registerColorThread() {
@@ -65,8 +83,7 @@ public class ClientProxy extends CommonProxy {
 					}
 				}
 			}
-		});
-		th.setName("color");
+		}, "color");
 		th.start();
 	}
 
@@ -74,11 +91,6 @@ public class ClientProxy extends CommonProxy {
 		if (color == null)
 			return 0;
 		return color.getRGB();
-	}
-
-	public void registerEvents() {
-		MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
-		super.registerEvents();
 	}
 
 }

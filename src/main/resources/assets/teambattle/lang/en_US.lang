@@ -1,4 +1,12 @@
+#---------------------------------------
+#Creative tab
+#---------------------------------------
+
 itemGroup.teambattletab=§4Teambattle§r
+
+#---------------------------------------
+#Items and blocks (+tooltips)
+#---------------------------------------
 
 tile.teambattleore.name=§9Teambattle Ore§r
 tooltip.tile.teambattleore=Needed for all the other things!
@@ -35,3 +43,9 @@ tooltip.item.teambattlebow=Nice sharp shooter!
 
 item.teambattlebackpack.name=§9Teambattle Backpack§r
 tooltip.item.teambattlebackpack=Put all your stuff in here!
+
+#---------------------------------------
+#Keybindings
+#---------------------------------------
+category.keybinding.teambattle=§4Teambattle§r
+keybinding.keycraftinggui=§9Opens the Craftinggui preview§r

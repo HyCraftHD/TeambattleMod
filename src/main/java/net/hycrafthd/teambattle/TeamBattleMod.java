@@ -41,6 +41,7 @@ public class TeamBattleMod {
 		CommonRegistryUtil.registerWorldGenerator(new TWorldGenerator(), 0);
 		TeambattleReference.proxy.registerModels();
 		TeambattleReference.proxy.registerEffects();
+		TeambattleReference.proxy.registerKeybinding();
 		TeambattleReference.proxy.registerColorThread();
 	}
 

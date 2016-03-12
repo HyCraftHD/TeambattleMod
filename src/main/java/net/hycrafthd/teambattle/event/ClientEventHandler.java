@@ -9,6 +9,7 @@ import org.lwjgl.input.Keyboard;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.gui.GuiCraftingRecipes;
+import net.hycrafthd.teambattle.proxy.ClientProxy;
 import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
 import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.client.Minecraft;
@@ -58,10 +59,10 @@ public class ClientEventHandler {
 
 	@SubscribeEvent
 	public void onTick(TickEvent event) {
-		Minecraft mc = Minecraft.getMinecraft();
+		Minecraft mc = Minecraft.getMinecraft();	
 		if (mc.currentScreen != null && mc.currentScreen instanceof GuiContainer) {
 			GuiContainer container = (GuiContainer) mc.currentScreen;
-			if (Keyboard.isKeyDown(Keyboard.KEY_K)) {
+			if (Keyboard.isKeyDown(ClientProxy.craftinggui.getKeyCode())) {
 				if (container.getSlotUnderMouse() != null) {
 					Slot slot = container.getSlotUnderMouse();
 					if (slot.getStack() != null) {
