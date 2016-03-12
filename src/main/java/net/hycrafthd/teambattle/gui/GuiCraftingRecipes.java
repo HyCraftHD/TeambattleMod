@@ -1,24 +1,11 @@
 package net.hycrafthd.teambattle.gui;
 
-import java.awt.Color;
 import java.io.IOException;
-import java.util.Arrays;
-
 import net.hycrafthd.teambattle.TeambattleReference;
-import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
-import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class GuiCraftingRecipes extends GuiScreen {
 
@@ -60,21 +47,13 @@ public class GuiCraftingRecipes extends GuiScreen {
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
 
-		// TODO Render system for tooltips would be nice!
-
-		// int mx = (this.width - mouseX) / 2;
-		// int my = (this.height - mouseY) / 2;
-
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		this.drawItemStack(stack, i + 124, j + 35);
 
-		// System.out.println(i + " " + j + " : " + mouseX + " " + mouseY);
-
-		// if (0 - mx < 8 && 0 - mx > -8 && 0 - my < 8 && 0 - my > -8) {
-		// this.drawHoveringText(stack.getTooltip(mc.thePlayer,
-		// mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
-		// }
+		 if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
+		 this.drawHoveringText(stack.getTooltip(mc.thePlayer,mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+		 }
 
 		if (input != null) {
 			try {
@@ -82,18 +61,36 @@ public class GuiCraftingRecipes extends GuiScreen {
 					ItemStack current = input[k];
 					if (current != null) {
 						InputRenderType inputrender = InputRenderType.byId(k);
-						this.drawItemStack(current, i + inputrender.getX() + 30, j + inputrender.getY() + 17);
+						
 
-						int ix = inputrender.getX();
-						int iy = inputrender.getY();
+						int ix = i + inputrender.getX() + 30;
+						int iy = j + inputrender.getY() + 17;
+						
+						this.drawItemStack(current, ix,iy );
 
-						/*
-						 * if (ix - mx < 8 && ix - mx >= -9 && iy - my < 8 && iy
-						 * - my >= -9) {
-						 * this.drawHoveringText(current.getTooltip(mc.
-						 * thePlayer, mc.gameSettings.advancedItemTooltips),
-						 * mouseX, mouseY); }
-						 */
+					}
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+
+		if (input != null) {
+			try {
+				for (int k = 0; k < input.length; k++) {
+					ItemStack current = input[k];
+					if (current != null) {
+						InputRenderType inputrender = InputRenderType.byId(k);
+						
+
+						int ix = i + inputrender.getX() + 30;
+						int iy = j + inputrender.getY() + 17;
+
+						 if (ix < mouseX && ix + 16 > mouseX && iy < mouseY && iy + 16 > mouseY) {
+						 this.drawHoveringText(current.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips),mouseX, mouseY); 
+						 break;
+						 }
 					}
 				}
 			} catch (Exception ex) {
