@@ -26,6 +26,10 @@ public class CommonProxy {
 	public void registerColorThread() {
 	}
 
+	// Client Stuff
+	public void registerEntityRenders() {
+	}
+
 	public void registerEvents() {
 		MinecraftForge.EVENT_BUS.register(new CommonEventHander());
 	}

@@ -8,11 +8,13 @@ import org.lwjgl.input.Keyboard;
 
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
+import net.hycrafthd.teambattle.entity.EntityHangGlider;
 import net.hycrafthd.teambattle.gui.GuiCraftingRecipes;
 import net.hycrafthd.teambattle.proxy.ClientProxy;
 import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
 import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -82,8 +84,14 @@ public class ClientEventHandler {
 
 	@SubscribeEvent
 	public void onPlayerBodyRender(PlayerBodyRenderEvent event) {
-		GlStateManager.rotate(75, -1, 0, 0);
-		GlStateManager.translate(0, -0.5, 1.2);
+		final AbstractClientPlayer player = event.player;
+		if (player.riddenByEntity != null && player.riddenByEntity instanceof EntityHangGlider && !player.onGround) {
+			player.limbSwing = 0f;
+			player.prevLimbSwingAmount = 0f;
+			player.limbSwingAmount = 0f;
+			GlStateManager.rotate(75, -1, 0, 0);
+			GlStateManager.translate(0, -0.5, 1.2);
+		}
 	}
 
 }
