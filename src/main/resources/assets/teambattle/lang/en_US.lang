@@ -18,34 +18,42 @@ item.teambattleingot.name=§9Teambattle Ingot§r
 tooltip.item.teambattleingot=Base material!
 
 item.teambattlesword.name=§9Teambattle Sword§r
-tooltip.item.teambattlesword=Overpowered!
+tooltip.item.teambattlesword=Overpowered!#break#Nearly unlimited durability!
 
 item.teambattlepickaxe.name=§9Teambattle Pickaxe§r
-tooltip.item.teambattlepickaxe=Makes farming better!
+tooltip.item.teambattlepickaxe=Makes farming better!#break#Nearly unlimited durability!
 
 item.teambattleshovel.name=§9Teambattle Shovel§r
 tooltip.item.teambattleshovel=Just a fast shovel with nearly#break#unlimited durability!
 
 item.teambattlehelmet.name=§9Teambattle Helmet§r
-tooltip.item.teambattlehelmet=Epic!
+tooltip.item.teambattlehelmet=Epic!#break#Nearly unlimited durability!
 
 item.teambattlechestplate.name=§9Teambattle Chestplate§r
-tooltip.item.teambattlechestplate=Incredible!
+tooltip.item.teambattlechestplate=Incredible!#break#Nearly unlimited durability!
 
 item.teambattleleggings.name=§9Teambattle Leggings§r
-tooltip.item.teambattleleggings=Better than epic!
+tooltip.item.teambattleleggings=Sexy!#break#Nearly unlimited durability!
 
 item.teambattleboots.name=§9Teambattle Boots§r
-tooltip.item.teambattleboots=Epic!
+tooltip.item.teambattleboots=Comfortable!#break#Nearly unlimited durability!
 
 item.teambattlebow.name=§9Teambattle Bow§r
 tooltip.item.teambattlebow=Nice sharp shooter!
 
 item.teambattlebackpack.name=§9Teambattle Backpack§r
-tooltip.item.teambattlebackpack=Put all your stuff in here!
+tooltip.item.teambattlebackpack=Need more inventoryspace?#break#Try this!
+
+item.teambattlehangglider.name=§9Teambattle Hangglider§r
+tooltip.item.teambattlehangglider=Escape in empyreumatic situations!
 
 #---------------------------------------
 #Keybindings
 #---------------------------------------
 category.keybinding.teambattle=§4Teambattle§r
 keybinding.keycraftinggui=§9Opens the Craftinggui preview§r
+
+#---------------------------------------
+#Commands
+#---------------------------------------
+command.enderchest.usage=/enderchest

@@ -33,7 +33,7 @@ public class BlockTeambattleOre extends Block {
 
 	@Override
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
-		return 2;
+		return quantityDroppedWithBonus(fortune, random);
 	}
 
 	@Override

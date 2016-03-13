@@ -1,7 +1,6 @@
 package net.hycrafthd.teambattle.event;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.lwjgl.input.Keyboard;
@@ -10,12 +9,15 @@ import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.entity.EntityHangGlider;
 import net.hycrafthd.teambattle.gui.GuiCraftingRecipes;
+import net.hycrafthd.teambattle.gui.GuiTeambattleOverlay;
+import net.hycrafthd.teambattle.gui.GuiTeambattleSettings;
 import net.hycrafthd.teambattle.proxy.ClientProxy;
 import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
 import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,11 +26,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.FOVUpdateEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.common.registry.GameData;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -91,6 +94,29 @@ public class ClientEventHandler {
 			player.limbSwingAmount = 0f;
 			GlStateManager.rotate(75, -1, 0, 0);
 			GlStateManager.translate(0, -0.5, 1.2);
+		}
+	}
+
+	@SubscribeEvent
+	public void renderoverlay(RenderGameOverlayEvent event) {
+		if (event.type == ElementType.ALL)
+			new GuiTeambattleOverlay(event);
+	}
+
+	@SubscribeEvent
+	public void onGuiScreenonInitGui(GuiScreenEvent.InitGuiEvent event) {
+		if (event.gui instanceof GuiIngameMenu) {
+			GuiIngameMenu menue = (GuiIngameMenu) event.gui;
+			event.buttonList.add(new GuiButton(20, menue.width / 2 - 100, menue.height / 4 + 128, 200, 20, "Teambattle Settings"));
+		}
+	}
+
+	@SubscribeEvent
+	public void onGuiScreenonActionPerformed(GuiScreenEvent.ActionPerformedEvent event) {
+		if (event.gui instanceof GuiIngameMenu) {
+			if (event.button.id == 20) {
+				event.gui.mc.displayGuiScreen(new GuiTeambattleSettings());
+			}
 		}
 	}
 

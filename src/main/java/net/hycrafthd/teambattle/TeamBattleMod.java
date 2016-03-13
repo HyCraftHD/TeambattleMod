@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(name = TeambattleReference.name, modid = TeambattleReference.modid, version = TeambattleReference.version, acceptedMinecraftVersions = "1.8.9", acceptableRemoteVersions = "1.8.9")
 public class TeamBattleMod {
@@ -29,6 +30,7 @@ public class TeamBattleMod {
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
+		new TConfigs(event);
 	}
 
 	@EventHandler
@@ -50,6 +52,11 @@ public class TeamBattleMod {
 		TeambattleReference.proxy.registerEffects();
 		TeambattleReference.proxy.registerKeybinding();
 		TeambattleReference.proxy.registerColorThread();
+	}
+
+	@EventHandler
+	public void serverstarting(FMLServerStartingEvent event) {
+		new TCommands(event);
 	}
 
 }
