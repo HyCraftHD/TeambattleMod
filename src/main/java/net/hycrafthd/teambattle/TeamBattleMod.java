@@ -40,7 +40,7 @@ public class TeamBattleMod {
 		new TItems();
 		new TEntitys();
 		TeambattleReference.proxy.registerEvents();
-		CommonRegistryUtil.registerGuiHandler(new TeamBattleGuiHandler());
+		CommonRegistryUtil.registerGuiHandler(new TGuihandler());
 	}
 
 	@EventHandler

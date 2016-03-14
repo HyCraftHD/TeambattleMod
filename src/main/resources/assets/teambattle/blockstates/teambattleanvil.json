@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "teambattle:teambattleanvil" },
+        "facing=west": { "model": "teambattle:teambattleanvil", "y": 90 },
+        "facing=north": { "model": "teambattle:teambattleanvil", "y": 180 },
+        "facing=east": { "model": "teambattle:teambattleanvil", "y": 270 }
+    }
+}

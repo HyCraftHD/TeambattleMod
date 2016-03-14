@@ -18,9 +18,11 @@ public class ItemTeambattleBackpack extends Item {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
-		player.openGui(TeambattleReference.instance, 0, world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
-		return itemStack;
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+		if (!world.isRemote) {
+			player.openGui(TeambattleReference.instance, 0, world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		}
+		return itemstack;
 	};
 
 	@Override

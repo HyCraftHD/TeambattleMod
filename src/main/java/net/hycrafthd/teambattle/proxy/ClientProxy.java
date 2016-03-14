@@ -39,6 +39,7 @@ public class ClientProxy extends CommonProxy {
 
 		// Blocks
 		ClientRegistryUtil.registerModelRenderer(TBlocks.teambattleore);
+		ClientRegistryUtil.registerModelRenderer(TBlocks.teambattleanvil);
 
 		// Items
 		ClientRegistryUtil.registerModelRenderer(TItems.teambattleingotraw);
