@@ -33,21 +33,12 @@ public class BlockTeambattleOre extends Block {
 
 	@Override
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
-		return quantityDroppedWithBonus(fortune, random);
+		return this.quantityDroppedWithBonus(fortune, random);
 	}
 
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		if (fortune > 0) {
-			int i = random.nextInt(fortune + 2) - 1;
-
-			if (i < 0) {
-				i = 0;
-			}
-			return this.quantityDropped(random) * (i + 1);
-		} else {
-			return this.quantityDropped(random);
-		}
+		return fortune + 1;
 	}
 
 	@Override
