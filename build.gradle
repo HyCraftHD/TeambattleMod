@@ -20,7 +20,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.0"
+version = "0.1-betabuild"
 group= "net.hycrafthd.teambattle" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "teambattle"
 
@@ -29,6 +29,14 @@ minecraft {
     runDir = "run"
     mappings = "stable_20"
     makeObfSourceJar = false
+}
+
+
+
+jar {
+    manifest {
+        attributes("FMLCorePlugin": "net.hycrafthd.teambattle.asm.TeambattleLoadingPlugin", "FMLCorePluginContainsFMLMod": "true")
+    }
 }
 
 dependencies {

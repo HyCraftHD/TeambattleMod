@@ -33,7 +33,7 @@ public class ContainerTeambattleAnvil extends ContainerRepair {
 
 	@Override
 	public void updateItemName(String newName) {
-		super.updateItemName(newName.replace('&', '§'));
+		super.updateItemName(newName.replace('&', ''));
 
 	}
 
