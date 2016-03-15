@@ -7,13 +7,16 @@ import org.lwjgl.input.Keyboard;
 
 import io.netty.buffer.Unpooled;
 import net.hycrafthd.teambattle.container.ContainerTeambattleAnvil;
+import net.hycrafthd.teambattle.gui.GuiCraftingRecipes.InputRenderType;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -52,6 +55,26 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 		this.nameField.setMaxStringLength(30);
 		this.inventorySlots.removeCraftingFromCrafters(this);
 		this.inventorySlots.onCraftGuiOpened(this);
+
+		int x = i + 180;
+		int y = j;
+
+		for (int r = 0; r < 4; r++) {
+			for (int l = 0; l < 5; l++) {
+				GuiCustomButton button = new GuiCustomButton(r * 5 + l, x + 18 * l, y + 18 * r, 16, 16, "\u00a7" + ColorType.byId(r * 5 + l).getCode() + "" + ColorType.byId(r * 5 + l).getCode());
+				button.enabled = false;
+				buttonList.add(button);
+			}
+		}
+
+	}
+
+	@Override
+	public void actionPerformed(GuiButton button) throws IOException {
+		if (button.id >= 0 && button.id <= 19) {
+			nameField.setText(nameField.getText() + "&" + ColorType.byId(button.id).getCode());
+			renameItem();
+		}
 	}
 
 	public void onGuiClosed() {
@@ -153,6 +176,9 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 		if (slotInd == 0) {
 			this.nameField.setText(stack == null ? "" : stack.getDisplayName());
 			this.nameField.setEnabled(stack != null);
+			for (GuiButton button : buttonList) {
+				button.enabled = stack != null;
+			}
 
 			if (stack != null) {
 				this.renameItem();
@@ -164,5 +190,41 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 	}
 
 	public void sendAllWindowProperties(Container p_175173_1_, IInventory p_175173_2_) {
+	}
+
+	enum ColorType {
+
+		black(0, '0'), darkblue(1, '1'), darkgreen(2, '2'), darkaqua(3, '3'), darkred(4, '4'), darkpurple(5, '5'), gold(6, '6'), gray(7, '7'), darkgray(8, '8'), blue(9, '9'), green(10, 'a'), aqua(11, 'b'), red(12, 'c'), lightpurple(13, 'd'), yellow(14, 'e'), white(15, 'f'), bold(16, 'l'), magic(17, 'k'), italic(18, 'o'), reset(19, 'r');
+
+		public static ColorType byId(int id) {
+			if (id < 0 || id >= all.length) {
+				id = 0;
+			}
+			return all[id];
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public char getCode() {
+			return code;
+		}
+
+		private int id;
+		private char code;
+
+		private static final ColorType[] all = new ColorType[values().length];
+
+		ColorType(int id, char code) {
+			this.id = id;
+			this.code = code;
+		}
+
+		static {
+			for (ColorType type : values()) {
+				all[type.getId()] = type;
+			}
+		}
 	}
 }

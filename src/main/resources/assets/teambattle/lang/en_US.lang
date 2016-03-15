@@ -11,6 +11,9 @@ itemGroup.teambattletab=§4Teambattle§r
 tile.teambattleore.name=§9Teambattle Ore§r
 tooltip.tile.teambattleore=Needed for all the other things!
 
+tile.teambattleanvil.name=§9Teambattle Anvil§r
+tooltip.tile.teambattleanvil=Cheaper!
+
 item.teambattleingotraw.name=§9Teambattle Raw Ingot§r
 tooltip.item.teambattleingotraw=Useless without a diamond.
 
@@ -18,31 +21,31 @@ item.teambattleingot.name=§9Teambattle Ingot§r
 tooltip.item.teambattleingot=Base material!
 
 item.teambattlesword.name=§9Teambattle Sword§r
-tooltip.item.teambattlesword=Overpowered!#break#Nearly unlimited durability!
+tooltip.item.teambattlesword=Overpowered!
 
 item.teambattlepickaxe.name=§9Teambattle Pickaxe§r
-tooltip.item.teambattlepickaxe=Makes farming better!#break#Nearly unlimited durability!
+tooltip.item.teambattlepickaxe=Makes farming better!
 
 item.teambattleshovel.name=§9Teambattle Shovel§r
-tooltip.item.teambattleshovel=Just a fast shovel with nearly#break#unlimited durability!
+tooltip.item.teambattleshovel=Just a fast shovel!
 
 item.teambattlehelmet.name=§9Teambattle Helmet§r
-tooltip.item.teambattlehelmet=Epic!#break#Nearly unlimited durability!
+tooltip.item.teambattlehelmet=Epic!
 
 item.teambattlechestplate.name=§9Teambattle Chestplate§r
-tooltip.item.teambattlechestplate=Incredible!#break#Nearly unlimited durability!
+tooltip.item.teambattlechestplate=Incredible!
 
 item.teambattleleggings.name=§9Teambattle Leggings§r
-tooltip.item.teambattleleggings=Sexy!#break#Nearly unlimited durability!
+tooltip.item.teambattleleggings=Sexy!
 
 item.teambattleboots.name=§9Teambattle Boots§r
-tooltip.item.teambattleboots=Comfortable!#break#Nearly unlimited durability!
+tooltip.item.teambattleboots=Comfortable!
 
 item.teambattlebow.name=§9Teambattle Bow§r
 tooltip.item.teambattlebow=Nice sharp shooter!
 
 item.teambattlebackpack.name=§9Teambattle Backpack§r
-tooltip.item.teambattlebackpack=Need more inventoryspace?#break#Try this!
+tooltip.item.teambattlebackpack=Your Inventory is full?#break#Try this!
 
 item.teambattlehangglider.name=§9Teambattle Hangglider§r
 tooltip.item.teambattlehangglider=Escape in empyreumatic situations!

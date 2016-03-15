@@ -26,7 +26,7 @@ public class EntityHangGlider extends EntityLiving {
 						final double verticalSpeed;
 
 						if (player.isSprinting()) {
-							horizontalSpeed = 0.05;
+							horizontalSpeed = 0.0425;
 							verticalSpeed = 0.5;
 						} else if (player.isSneaking()) {
 							horizontalSpeed = 0.1;
