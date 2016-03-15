@@ -7,7 +7,6 @@ import org.lwjgl.input.Keyboard;
 
 import io.netty.buffer.Unpooled;
 import net.hycrafthd.teambattle.container.ContainerTeambattleAnvil;
-import net.hycrafthd.teambattle.gui.GuiCraftingRecipes.InputRenderType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
@@ -16,7 +15,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

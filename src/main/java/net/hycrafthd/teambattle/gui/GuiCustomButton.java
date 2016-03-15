@@ -5,9 +5,13 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiCustomButton extends GuiButton {
-	protected static ResourceLocation texture = new ResourceLocation("textures/gui/widgets.png");
+
+	private static ResourceLocation texture = new ResourceLocation("textures/gui/widgets.png");
 
 	public GuiCustomButton(int i, int j, int k, int l, int i1, String s) {
 		super(i, j, k, l, i1, s);
