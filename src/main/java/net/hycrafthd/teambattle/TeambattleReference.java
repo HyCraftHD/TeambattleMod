@@ -1,9 +1,12 @@
 package net.hycrafthd.teambattle;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.hycrafthd.teambattle.proxy.CommonProxy;
+import net.minecraft.crash.CrashReport;
+import net.minecraftforge.fml.common.MinecraftDummyContainer;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 
@@ -22,5 +25,23 @@ public class TeambattleReference {
 	public static CommonProxy proxy = new CommonProxy();
 
 	public static final Logger log = LogManager.getLogger(name);
+
+	public static void printExeption(Throwable th) {
+		printModInfo();
+		CrashReport.makeCrashReport(th, "Error by TeambattleMod");
+	}
+
+	public static void printExeption(String th) {
+		printModInfo();
+		log.error(th);
+	}
+
+	private static void printModInfo() {
+		log.error("--------------------------------------------------------------------------");
+		log.error("TeambattleMod by HyCraftHD!");
+		log.error("An error occured!");
+		log.error("Please report the following stacktrace to the modauthor on github: http://github.hycrafthd.de");
+		log.error("--------------------------------------------------------------------------");
+	}
 
 }

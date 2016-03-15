@@ -6,6 +6,7 @@ import java.util.List;
 import org.lwjgl.input.Keyboard;
 
 import io.netty.buffer.Unpooled;
+import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.container.ContainerTeambattleAnvil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -70,8 +71,20 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 	@Override
 	public void actionPerformed(GuiButton button) throws IOException {
 		if (button.id >= 0 && button.id <= 19) {
-			nameField.setText(nameField.getText() + "&" + ColorType.byId(button.id).getCode());
-			renameItem();
+			int p = nameField.getCursorPosition();
+			nameField.writeText("&" + ColorType.byId(button.id).getCode());
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						Thread.sleep(20L);
+						nameField.setFocused(true);
+						nameField.setCursorPosition(p + 2);
+					} catch (InterruptedException e) {
+						TeambattleReference.printExeption(e);
+					}
+				}
+			}, "anvilwaiter").start();
 		}
 	}
 
@@ -184,10 +197,10 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 		}
 	}
 
-	public void sendProgressBarUpdate(Container containerIn, int varToUpdate, int newValue) {
-	}
-
-	public void sendAllWindowProperties(Container p_175173_1_, IInventory p_175173_2_) {
+	@Override
+	public void updateScreen() {
+		super.updateScreen();
+		this.nameField.updateCursorCounter();
 	}
 
 	enum ColorType {
@@ -224,5 +237,11 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 				all[type.getId()] = type;
 			}
 		}
+	}
+
+	public void sendProgressBarUpdate(Container containerIn, int varToUpdate, int newValue) {
+	}
+
+	public void sendAllWindowProperties(Container p_175173_1_, IInventory p_175173_2_) {
 	}
 }
