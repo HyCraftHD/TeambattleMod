@@ -16,7 +16,7 @@ public class TeambattleReference {
 	public static final String resource = "teambattle:";
 
 	@Instance(modid)
-	public static TeamBattleMod instance = new TeamBattleMod();
+	public static TeambattleMod instance = new TeambattleMod();
 
 	@SidedProxy(serverSide = "net.hycrafthd.teambattle.proxy.CommonProxy", clientSide = "net.hycrafthd.teambattle.proxy.ClientProxy", modId = modid)
 	public static CommonProxy proxy = new CommonProxy();

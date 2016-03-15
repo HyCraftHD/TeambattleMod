@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(name = TeambattleReference.name, modid = TeambattleReference.modid, version = TeambattleReference.version, acceptedMinecraftVersions = "1.8.9", acceptableRemoteVersions = "1.8.9")
-public class TeamBattleMod {
+public class TeambattleMod {
 
 	public static CreativeTabs tab;
 

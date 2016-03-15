@@ -3,10 +3,10 @@ package net.hycrafthd.teambattle.container;
 import net.hycrafthd.teambattle.TBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerRepair;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 public class ContainerTeambattleAnvil extends ContainerRepair {
@@ -28,13 +28,21 @@ public class ContainerTeambattleAnvil extends ContainerRepair {
 	@Override
 	public void updateRepairOutput() {
 		super.updateRepairOutput();
-		maximumCost = 5;
+		maximumCost = 3;
+		Slot slot = inventorySlots.get(2);
+		if (slot != null) {
+			ItemStack stack = slot.getStack();
+			if (stack != null) {
+				stack.setRepairCost(0);
+				slot.putStack(stack);
+				inventorySlots.set(2, slot);
+			}
+		}
 	}
 
 	@Override
 	public void updateItemName(String newName) {
-		super.updateItemName(newName.replace('&', ''));
-
+		super.updateItemName(newName.replace('&', '\u00a7'));
 	}
 
 }

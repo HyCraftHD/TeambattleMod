@@ -16,8 +16,8 @@ public class TBlocks {
 	}
 
 	private void init() {
-		teambattleore = new BlockTeambattleOre().setUnlocalizedName("teambattleore").setCreativeTab(TeamBattleMod.tab);
-		teambattleanvil = new BlockTeambattleAnvil().setUnlocalizedName("teambattleanvil").setCreativeTab(TeamBattleMod.tab);
+		teambattleore = new BlockTeambattleOre().setUnlocalizedName("teambattleore").setCreativeTab(TeambattleMod.tab);
+		teambattleanvil = new BlockTeambattleAnvil().setUnlocalizedName("teambattleanvil").setCreativeTab(TeambattleMod.tab);
 	}
 
 	private void register() {

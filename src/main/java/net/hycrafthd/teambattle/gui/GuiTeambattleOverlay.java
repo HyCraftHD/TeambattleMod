@@ -3,7 +3,7 @@ package net.hycrafthd.teambattle.gui;
 import java.util.Iterator;
 
 import net.hycrafthd.teambattle.TConfigs;
-import net.hycrafthd.teambattle.TeamBattleMod;
+import net.hycrafthd.teambattle.TeambattleMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.inventory.GuiInventory;

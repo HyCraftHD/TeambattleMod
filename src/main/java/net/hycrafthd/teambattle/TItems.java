@@ -42,21 +42,21 @@ public class TItems {
 	}
 
 	private void init() {
-		teambattleingotraw = new ItemTeambattleIngot().setUnlocalizedName("teambattleingotraw").setCreativeTab(TeamBattleMod.tab);
-		teambattleingot = new ItemTeambattleIngot().setUnlocalizedName("teambattleingot").setCreativeTab(TeamBattleMod.tab);
+		teambattleingotraw = new ItemTeambattleIngot().setUnlocalizedName("teambattleingotraw").setCreativeTab(TeambattleMod.tab);
+		teambattleingot = new ItemTeambattleIngot().setUnlocalizedName("teambattleingot").setCreativeTab(TeambattleMod.tab);
 
-		teambattlesword = new ItemTeambattleSword(teambattletool).setUnlocalizedName("teambattlesword").setCreativeTab(TeamBattleMod.tab);
-		teambattlepickaxe = new ItemTeambattlePickAxe(teambattletool).setUnlocalizedName("teambattlepickaxe").setCreativeTab(TeamBattleMod.tab);
-		teambattleshovel = new ItemTeambattleShovel(teambattletool).setUnlocalizedName("teambattleshovel").setCreativeTab(TeamBattleMod.tab);
-		teambattlebow = new ItemTeambattleBow().setUnlocalizedName("teambattlebow").setCreativeTab(TeamBattleMod.tab);
+		teambattlesword = new ItemTeambattleSword(teambattletool).setUnlocalizedName("teambattlesword").setCreativeTab(TeambattleMod.tab);
+		teambattlepickaxe = new ItemTeambattlePickAxe(teambattletool).setUnlocalizedName("teambattlepickaxe").setCreativeTab(TeambattleMod.tab);
+		teambattleshovel = new ItemTeambattleShovel(teambattletool).setUnlocalizedName("teambattleshovel").setCreativeTab(TeambattleMod.tab);
+		teambattlebow = new ItemTeambattleBow().setUnlocalizedName("teambattlebow").setCreativeTab(TeambattleMod.tab);
 
-		teambattlehelmet = new ItemTeambattleArmor(teambattlearmor, 0).setUnlocalizedName("teambattlehelmet").setCreativeTab(TeamBattleMod.tab);
-		teambattlechestplate = new ItemTeambattleArmor(teambattlearmor, 1).setUnlocalizedName("teambattlechestplate").setCreativeTab(TeamBattleMod.tab);
-		teambattleleggings = new ItemTeambattleArmor(teambattlearmor, 2).setUnlocalizedName("teambattleleggings").setCreativeTab(TeamBattleMod.tab);
-		teambattleboots = new ItemTeambattleArmor(teambattlearmor, 3).setUnlocalizedName("teambattleboots").setCreativeTab(TeamBattleMod.tab);
+		teambattlehelmet = new ItemTeambattleArmor(teambattlearmor, 0).setUnlocalizedName("teambattlehelmet").setCreativeTab(TeambattleMod.tab);
+		teambattlechestplate = new ItemTeambattleArmor(teambattlearmor, 1).setUnlocalizedName("teambattlechestplate").setCreativeTab(TeambattleMod.tab);
+		teambattleleggings = new ItemTeambattleArmor(teambattlearmor, 2).setUnlocalizedName("teambattleleggings").setCreativeTab(TeambattleMod.tab);
+		teambattleboots = new ItemTeambattleArmor(teambattlearmor, 3).setUnlocalizedName("teambattleboots").setCreativeTab(TeambattleMod.tab);
 		
-		teambattlebackpack = new ItemTeambattleBackpack().setUnlocalizedName("teambattlebackpack").setCreativeTab(TeamBattleMod.tab);
-		teambattlehangglider = new ItemTeambattleHangglider().setUnlocalizedName("teambattlehangglider").setCreativeTab(TeamBattleMod.tab);
+		teambattlebackpack = new ItemTeambattleBackpack().setUnlocalizedName("teambattlebackpack").setCreativeTab(TeambattleMod.tab);
+		teambattlehangglider = new ItemTeambattleHangglider().setUnlocalizedName("teambattlehangglider").setCreativeTab(TeambattleMod.tab);
 	}
 
 	private void register() {
