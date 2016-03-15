@@ -23,7 +23,7 @@ public class ModelHangGlider extends ModelBase {
 		this.textureHeight = 128;
 		this.textureWidth = 128;
 
-		this.shape10 = new ModelRenderer(this, 122, 32);
+		/*this.shape10 = new ModelRenderer(this, 122, 32);
 		this.shape10.setRotationPoint(39.5F, -24.0F, -13.0F);
 		this.shape10.addBox(0.0F, 0.0F, 0.0F, 1, 60, 1, 0.0F);
 		setRotateAngle(this.shape10, 0.1745329F, 0.0F, 0.5934119F);
@@ -41,7 +41,7 @@ public class ModelHangGlider extends ModelBase {
 		this.shape11 = new ModelRenderer(this, 122, 32);
 		this.shape11.setRotationPoint(39.5F, -24.0F, 13.0F);
 		this.shape11.addBox(0.0F, 0.0F, 0.0F, 1, 60, 1, 0.0F);
-		setRotateAngle(this.shape11, -0.1745329F, 0.0F, 0.5934119F);
+		setRotateAngle(this.shape11, -0.1745329F, 0.0F, 0.5934119F);*/
 
 		//
 		// this.shape10 = new ModelRenderer(this, 122, 32);

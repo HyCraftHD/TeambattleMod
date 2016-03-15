@@ -5,8 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.hycrafthd.teambattle.proxy.CommonProxy;
-import net.minecraft.crash.CrashReport;
-import net.minecraftforge.fml.common.MinecraftDummyContainer;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 
@@ -28,7 +26,7 @@ public class TeambattleReference {
 
 	public static void printExeption(Throwable th) {
 		printModInfo();
-		CrashReport.makeCrashReport(th, "Error by TeambattleMod");
+		log.catching(Level.ALL, th);
 	}
 
 	public static void printExeption(String th) {

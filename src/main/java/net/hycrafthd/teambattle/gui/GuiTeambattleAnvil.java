@@ -71,7 +71,7 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 	@Override
 	public void actionPerformed(GuiButton button) throws IOException {
 		if (button.id >= 0 && button.id <= 19) {
-			int p = nameField.getCursorPosition();
+			final int p = nameField.getCursorPosition();
 			nameField.writeText("&" + ColorType.byId(button.id).getCode());
 			new Thread(new Runnable() {
 				@Override
