@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
+import net.hycrafthd.teambattle.util.MathUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.material.Material;
@@ -51,7 +52,7 @@ public class BlockTeambattleOre extends Block {
 	@Override
 	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (rand.nextInt(100) == 0) {
-			worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), TeambattleReference.resource + "teambattleore", 1.0F, 1.0F, true);
+			TeambattleReference.proxy.playSoundStayAtLocation(pos, TeambattleReference.resource + "teambattleore", 1.0F, MathUtil.getRandomFloatInRange(this.RANDOM, 0.8F, 1.2F));
 		}
 
 		for (int i = 0; i < 4; ++i) {

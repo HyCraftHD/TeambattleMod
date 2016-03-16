@@ -7,24 +7,20 @@ import org.lwjgl.input.Keyboard;
 
 import net.hycrafthd.teambattle.TBlocks;
 import net.hycrafthd.teambattle.TItems;
-import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.entity.EntityHangGlider;
 import net.hycrafthd.teambattle.entity.render.RenderHangglider;
 import net.hycrafthd.teambattle.event.ClientEventHandler;
 import net.hycrafthd.teambattle.particle.EntityTeambattleOreFX;
+import net.hycrafthd.teambattle.sound.MovingSoundEntity;
+import net.hycrafthd.teambattle.sound.PositionedSoundPos;
 import net.hycrafthd.teambattle.util.ClientRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderBlaze;
-import net.minecraft.client.renderer.entity.RenderEntity;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -75,6 +71,14 @@ public class ClientProxy extends CommonProxy {
 
 	public void registerEntityRenders() {
 		ClientRegistryUtil.registerEntityRenderer(EntityHangGlider.class, new RenderHangglider());
+	}
+
+	public void playSoundMovingAtEntity(Entity entity, String path, float soundVolume, float soundPitch) {
+		Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundEntity(entity, new ResourceLocation(path), soundVolume, soundPitch));
+	}
+
+	public void playSoundStayAtLocation(BlockPos pos, String path, float soundVolume, float soundPitch) {
+		Minecraft.getMinecraft().getSoundHandler().playSound(new PositionedSoundPos(pos, new ResourceLocation(path), soundVolume, soundPitch));
 	}
 
 	Color color = null;

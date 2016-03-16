@@ -2,10 +2,12 @@ package net.hycrafthd.teambattle.entity;
 
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.item.ItemTeambattleHangglider;
+import net.hycrafthd.teambattle.util.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityHangGlider extends EntityLiving {
@@ -49,8 +51,8 @@ public class EntityHangGlider extends EntityLiving {
 				if (!this.worldObj.isRemote) {
 					this.rotationYaw = player.rotationYaw;
 				}
-				if (rand.nextInt(10) == 0) {
-					player.playSound(TeambattleReference.resource + "teambattlehangglider", this.getSoundVolume(), this.getSoundPitch());
+				if (rand.nextInt(50) == 0) {
+					TeambattleReference.proxy.playSoundMovingAtEntity(this, TeambattleReference.resource + "teambattlehangglider", MathUtil.getRandomFloatInRange(this.rand, 0.25F, 0.95F), this.getSoundPitch());
 				}
 			} else if (!this.worldObj.isRemote) {
 				this.setDead();
