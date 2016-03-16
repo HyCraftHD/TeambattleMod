@@ -1,4 +1,5 @@
 {
     "teambattleore": { "category": "block", "sounds": [ "teambattleore" ] },
-	"teambattlehangglider": { "category": "ambient", "sounds": [ "teambattlehangglider" ] }
+	"teambattlehangglider": { "category": "ambient", "sounds": [ "teambattlehangglider" ] },
+	"teambattleswordhit": { "category": "player", "sounds": [ "teambattleswordhit" ] }
 }

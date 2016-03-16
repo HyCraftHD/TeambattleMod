@@ -17,10 +17,12 @@ public class GuiTeambattleSettings extends GuiScreen {
 
 	@Override
 	public void initGui() {
-		buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 80, 200, 20, "Done"));
-		buttonList.add(new GuiButton(1, width / 2 - 100, height / 4 + 32, 200, 20, "Show HUD: " + TConfigs.showHUD));
-		buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 56, 200, 20, "Show Entity: " + TConfigs.showEntity));
-		buttonList.add(gamma = new GuiSlider(3, width / 2 - 100, height / 4 + 8, 200, 20, "Gamma ", "%", 0.0, 1000.0, mc.gameSettings.gammaSetting * 100, true, true));
+		buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 120, 200, 20, "Done"));
+		buttonList.add(gamma = new GuiSlider(1, width / 2 - 100, height / 4, 200, 20, "Gamma ", "%", 0.0, 1000.0, mc.gameSettings.gammaSetting * 100, true, true));
+		buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 24, 200, 20, "Show entity: " + TConfigs.showEntity));
+		buttonList.add(new GuiButton(3, width / 2 - 100, height / 4 + 48, 200, 20, "Show HUD: " + TConfigs.showHUD));
+		buttonList.add(new GuiButton(4, width / 2 - 100, height / 4 + 72, 200, 20, "Custom sword sound: " + TConfigs.customSwordSound));
+		buttonList.add(new GuiButton(5, width / 2 - 100, height / 4 + 96, 200, 20, "Change fov: " + TConfigs.fovAtBowOrSpeed));
 	}
 
 	@Override
@@ -34,13 +36,21 @@ public class GuiTeambattleSettings extends GuiScreen {
 		case 0:
 			mc.displayGuiScreen(new GuiIngameMenu());
 			break;
-		case 1:
+		case 2:
 			TConfigs.updateShowHUD(!TConfigs.showHUD);
 			button.displayString = "Show HUD: " + TConfigs.showHUD;
 			break;
-		case 2:
+		case 3:
 			TConfigs.updateShowEntity(!TConfigs.showEntity);
 			button.displayString = "Show Entity: " + TConfigs.showEntity;
+			break;
+		case 4:
+			TConfigs.updateCustomSwordSound(!TConfigs.customSwordSound);
+			button.displayString = "Custom sword sound: " + TConfigs.customSwordSound;
+			break;
+		case 5:
+			TConfigs.updateFovAtBowOrSpeed(!TConfigs.fovAtBowOrSpeed);
+			button.displayString = "Change fov: " + TConfigs.fovAtBowOrSpeed;
 			break;
 		}
 

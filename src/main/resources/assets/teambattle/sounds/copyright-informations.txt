@@ -11,3 +11,10 @@ teambattlehangglider.ogg:
   sound: https://freesound.org/people/Benboncan/sounds/134699/
   license: http://creativecommons.org/licenses/by/3.0/
   change: cutted / remixed
+  
+teambattleswordhit.ogg:
+  by: Mojang
+  mcversion: 1.9
+  orginal name: minecraft/sounds/entity/player/attack/strong1.ogg
+  license: by Mojang.
+  change: none

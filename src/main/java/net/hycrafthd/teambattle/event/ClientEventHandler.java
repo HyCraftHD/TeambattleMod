@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import net.hycrafthd.teambattle.TConfigs;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.entity.EntityHangGlider;
@@ -16,19 +17,27 @@ import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
 import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -41,6 +50,18 @@ public class ClientEventHandler {
 	@SubscribeEvent
 	public void onFOVUpdate(FOVUpdateEvent event) {
 		EntityPlayer player = event.entity;
+		if (!TConfigs.fovAtBowOrSpeed) {
+			if (player.isUsingItem()) {
+				if (player.getItemInUse().getItem() == TItems.teambattlebow || player.getItemInUse().getItem() == Items.bow) {
+					event.newfov = 1.0f;
+					return;
+				}
+			}
+			if (player.getActivePotionEffect(Potion.moveSpeed) != null) {
+				event.newfov = 1.0f;
+				return;
+			}
+		}
 		if (player.isUsingItem() && player.getItemInUse().getItem() == TItems.teambattlebow) {
 			int s = player.getItemInUseDuration();
 			float f = s * 0.3F;

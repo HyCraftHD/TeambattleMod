@@ -1,28 +1,27 @@
 package net.hycrafthd.teambattle.item;
 
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
-
-import java.util.Random;
-
-import net.minecraft.entity.Entity;
+import net.hycrafthd.teambattle.TConfigs;
+import net.hycrafthd.teambattle.TeambattleReference;
+import net.hycrafthd.teambattle.util.MathUtil;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 
 public class ItemTeambattleSword extends ItemSword {
 
 	private final ToolMaterial material;
-	
+
 	public ItemTeambattleSword(ToolMaterial teambattletool) {
 		super(teambattletool);
 		this.material = teambattletool;
 	}
 
-	public int getItemEnchantability() {
-		return this.material.getEnchantability();
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if (TConfigs.customSwordSound) {
+			TeambattleReference.proxy.playSoundStayAtLocation(attacker.getPosition(), TeambattleReference.resource + "teambattleswordhit", 1.0F, MathUtil.getRandomFloatInRange(attacker.getRNG(), 0.7F, 1.2F));
+		}
+		return super.hitEntity(stack, target, attacker);
 	}
 
 }
