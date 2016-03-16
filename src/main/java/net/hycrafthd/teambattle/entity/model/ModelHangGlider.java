@@ -20,6 +20,7 @@ public class ModelHangGlider extends ModelBase {
 	public ModelHangGlider() {
 		textureWidth = 128;
 		textureHeight = 64;
+
 		middle = new ModelRenderer(this, 0, 0);
 		middle.addBox(-16F, 0F, -16F, 32, 1, 32);
 		middle.setRotationPoint(0F, -5F, 0F);

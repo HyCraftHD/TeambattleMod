@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 public class ItemTeambattleBow extends ItemBow {
@@ -68,7 +67,7 @@ public class ItemTeambattleBow extends ItemBow {
 			entityarrow.motionX *= 1.5;
 			entityarrow.motionY *= 1.5;
 			entityarrow.motionZ *= 1.5;
-			
+
 			if (f == 1.0F) {
 				entityarrow.setIsCritical(true);
 			}
@@ -82,13 +81,13 @@ public class ItemTeambattleBow extends ItemBow {
 			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, stack);
 
 			if (k > 0) {
-				entityarrow.setKnockbackStrength(k*2);
+				entityarrow.setKnockbackStrength(k * 2);
 			}
 
 			int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, stack);
-			
+
 			if (l > 0) {
-				entityarrow.setFire(20 + l*100);
+				entityarrow.setFire(20 + l * 100);
 			}
 
 			stack.damageItem(1, playerIn);

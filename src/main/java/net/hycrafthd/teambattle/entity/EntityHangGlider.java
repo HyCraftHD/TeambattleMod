@@ -1,5 +1,6 @@
 package net.hycrafthd.teambattle.entity;
 
+import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.item.ItemTeambattleHangglider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -47,6 +48,9 @@ public class EntityHangGlider extends EntityLiving {
 
 				if (!this.worldObj.isRemote) {
 					this.rotationYaw = player.rotationYaw;
+				}
+				if (rand.nextInt(10) == 0) {
+					player.playSound(TeambattleReference.resource + "teambattlehangglider", this.getSoundVolume(), this.getSoundPitch());
 				}
 			} else if (!this.worldObj.isRemote) {
 				this.setDead();

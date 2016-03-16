@@ -1,3 +1,4 @@
 {
-    "teambattleore": { "category": "block", "sounds": [ "teambattleore" ] }
+    "teambattleore": { "category": "block", "sounds": [ "teambattleore" ] },
+	"teambattlehangglider": { "category": "ambient", "sounds": [ "teambattlehangglider" ] }
 }

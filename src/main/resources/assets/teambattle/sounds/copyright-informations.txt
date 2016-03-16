@@ -3,3 +3,11 @@ teambattleore.ogg:
   url: https://www.freesound.org/people/Spectre_of_Pain/
   sound: https://www.freesound.org/people/Spectre_of_Pain/sounds/338134/
   license: http://creativecommons.org/licenses/by/3.0/
+  change: cutted
+
+teambattlehangglider.ogg:
+  by: Benboncan
+  url: https://freesound.org/people/Benboncan/
+  sound: https://freesound.org/people/Benboncan/sounds/134699/
+  license: http://creativecommons.org/licenses/by/3.0/
+  change: cutted / remixed
