@@ -93,7 +93,7 @@ public class ClientEventHandler {
 			player.prevLimbSwingAmount = 0f;
 			player.limbSwingAmount = 0f;
 			GlStateManager.rotate(75, -1, 0, 0);
-			GlStateManager.translate(0, -0.5, 1.2);
+			GlStateManager.translate(0, -0.6, 1.2);
 		}
 	}
 

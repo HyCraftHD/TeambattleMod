@@ -12,7 +12,6 @@ public class EntityHangGlider extends EntityLiving {
 	public EntityHangGlider(World world) {
 		super(world);
 		this.setAlwaysRenderNameTag(true);
-
 	}
 
 	public void onEntityUpdate() {
