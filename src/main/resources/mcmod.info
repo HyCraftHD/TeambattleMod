@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "modid": "teambattle",
+  "name": "Teambattle Mod",
+  "description": "Cool stuff for a teambattle! Enjoy :D Sourcecode is available at my github! ~HyCraftHD",
+  "version": "0.1",
+  "mcversion": "1.8.9",
+  "url": "https://www.hycrafthd.net",
+  "updateUrl": "https://github.com/HyCraftHD/TeambattleMod",
+  "authorList": ["HyCraftHD"],
+  "credits": "Thanks to MrTroble",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

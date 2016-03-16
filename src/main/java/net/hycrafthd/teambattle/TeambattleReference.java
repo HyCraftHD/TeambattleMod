@@ -26,7 +26,9 @@ public class TeambattleReference {
 
 	public static void printExeption(Throwable th) {
 		printModInfo();
-		log.catching(Level.ALL, th);
+		for (StackTraceElement element : th.getStackTrace()) {
+			log.error(element);
+		}
 	}
 
 	public static void printExeption(String th) {
