@@ -85,6 +85,7 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 					}
 				}
 			}, "anvilwaiter").start();
+			renameItem();
 		}
 	}
 
