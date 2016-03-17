@@ -16,11 +16,11 @@ import net.minecraft.network.play.server.S23PacketBlockChange;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemTeambattlePickAxe extends ItemPickaxe {
+public class ItemTeambattlePickaxe extends ItemPickaxe {
 
 	private List<Block> blocks = new ArrayList<Block>();
 
-	public ItemTeambattlePickAxe(ToolMaterial material) {
+	public ItemTeambattlePickaxe(ToolMaterial material) {
 		super(material);
 		blocks.add(TBlocks.teambattleore);
 	}

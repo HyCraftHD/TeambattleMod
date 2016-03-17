@@ -5,7 +5,7 @@ import net.hycrafthd.teambattle.item.ItemTeambattleBackpack;
 import net.hycrafthd.teambattle.item.ItemTeambattleBow;
 import net.hycrafthd.teambattle.item.ItemTeambattleHangglider;
 import net.hycrafthd.teambattle.item.ItemTeambattleIngot;
-import net.hycrafthd.teambattle.item.ItemTeambattlePickAxe;
+import net.hycrafthd.teambattle.item.ItemTeambattlePickaxe;
 import net.hycrafthd.teambattle.item.ItemTeambattleShovel;
 import net.hycrafthd.teambattle.item.ItemTeambattleSword;
 import net.hycrafthd.teambattle.util.CommonRegistryUtil;
@@ -46,7 +46,7 @@ public class TItems {
 		teambattleingot = new ItemTeambattleIngot().setUnlocalizedName("teambattleingot").setCreativeTab(TeambattleMod.tab);
 
 		teambattlesword = new ItemTeambattleSword(teambattletool).setUnlocalizedName("teambattlesword").setCreativeTab(TeambattleMod.tab);
-		teambattlepickaxe = new ItemTeambattlePickAxe(teambattletool).setUnlocalizedName("teambattlepickaxe").setCreativeTab(TeambattleMod.tab);
+		teambattlepickaxe = new ItemTeambattlePickaxe(teambattletool).setUnlocalizedName("teambattlepickaxe").setCreativeTab(TeambattleMod.tab);
 		teambattleshovel = new ItemTeambattleShovel(teambattletool).setUnlocalizedName("teambattleshovel").setCreativeTab(TeambattleMod.tab);
 		teambattlebow = new ItemTeambattleBow().setUnlocalizedName("teambattlebow").setCreativeTab(TeambattleMod.tab);
 

@@ -119,9 +119,10 @@ public class ClientEventHandler {
 	}
 
 	@SubscribeEvent
-	public void renderoverlay(RenderGameOverlayEvent event) {
-		if (event.type == ElementType.ALL)
+	public void onRenderGameOverlay(RenderGameOverlayEvent event) {
+		if (event.type == ElementType.ALL) {
 			new GuiTeambattleOverlay(event);
+		}
 	}
 
 	@SubscribeEvent
