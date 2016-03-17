@@ -185,7 +185,7 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 
 	public void sendSlotContents(Container containerToSend, int slotInd, ItemStack stack) {
 		if (slotInd == 0) {
-			this.nameField.setText(stack == null ? "" : stack.getDisplayName());
+			this.nameField.setText(stack == null ? "" : stack.getDisplayName().replace('\u00a7', '&'));
 			this.nameField.setEnabled(stack != null);
 			for (GuiButton button : buttonList) {
 				button.enabled = stack != null;
