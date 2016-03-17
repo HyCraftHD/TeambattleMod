@@ -27,6 +27,7 @@ public class TRecipes {
 		CommonRegistryUtil.registerShapedCraftingRecipe(new ItemStack(TItems.teambattleboots), new Object[] { armorpattern[3], 'i', TItems.teambattleingot });
 		CommonRegistryUtil.registerShapedCraftingRecipe(new ItemStack(TItems.teambattlebackpack), new Object[] { "iii", "isi", "iii", 'i', TItems.teambattleingot, 's', Items.string });
 		CommonRegistryUtil.registerShapedCraftingRecipe(new ItemStack(TItems.teambattlehangglider), new Object[] { "iww", "iiw", "iii", 'i', TItems.teambattleingot, 'w', Blocks.wool });
+		CommonRegistryUtil.registerShapedCraftingRecipe(new ItemStack(TItems.teambattlehangglider), new Object[] { "ibi", "bab", "ibi", 'i', TItems.teambattleingot, 'b', Blocks.iron_block, 'a', Blocks.anvil });
 
 		// CommonRegistryUtil.registerGuiRecipe(new
 		// ItemStack(TItems.teambattlesword), new
