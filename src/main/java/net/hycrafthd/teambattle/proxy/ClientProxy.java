@@ -5,13 +5,12 @@ import java.util.Random;
 
 import org.lwjgl.input.Keyboard;
 
-import com.ibm.icu.impl.ICUService.Key;
-
 import net.hycrafthd.teambattle.TBlocks;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.entity.EntityHangGlider;
 import net.hycrafthd.teambattle.entity.render.RenderHangglider;
 import net.hycrafthd.teambattle.event.ClientEventHandler;
+import net.hycrafthd.teambattle.gui.ClickCounterChecker;
 import net.hycrafthd.teambattle.particle.EntityTeambattleOreFX;
 import net.hycrafthd.teambattle.sound.MovingSoundEntity;
 import net.hycrafthd.teambattle.sound.PositionedSoundPos;
@@ -84,6 +83,18 @@ public class ClientProxy extends CommonProxy {
 
 	public void playSoundStayAtLocation(BlockPos pos, String path, float soundVolume, float soundPitch) {
 		Minecraft.getMinecraft().getSoundHandler().playSound(new PositionedSoundPos(pos, new ResourceLocation(path), soundVolume, soundPitch));
+	}
+
+	public void registerClickThread() {
+		Thread th = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					ClickCounterChecker.update();
+				}
+			}
+		}, "click");
+		th.start();
 	}
 
 	Color color = null;

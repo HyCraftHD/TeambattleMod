@@ -9,6 +9,7 @@ import net.hycrafthd.teambattle.TConfigs;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.entity.EntityHangGlider;
+import net.hycrafthd.teambattle.gui.ClickCounterChecker;
 import net.hycrafthd.teambattle.gui.GuiCraftingRecipes;
 import net.hycrafthd.teambattle.gui.GuiTeambattleOverlay;
 import net.hycrafthd.teambattle.gui.GuiTeambattleSettings;
@@ -146,5 +147,4 @@ public class ClientEventHandler {
 			KeyBinding.onTick(mc.gameSettings.keyBindAttack.getKeyCode());
 		}
 	}
-
 }

@@ -1,6 +1,8 @@
 package net.hycrafthd.teambattle.gui;
 
 import net.hycrafthd.teambattle.TConfigs;
+import net.hycrafthd.teambattle.proxy.ClientProxy;
+import net.hycrafthd.teambattle.util.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -40,8 +42,10 @@ public class GuiTeambattleOverlay {
 
 		gui.drawString(mc.fontRendererObj, EnumChatFormatting.GRAY + "[" + EnumChatFormatting.GOLD + "Facing" + EnumChatFormatting.GRAY + "] " + EnumChatFormatting.RESET + mc.thePlayer.getHorizontalFacing(), 2, 52, 14737632);
 
+		gui.drawString(mc.fontRendererObj, EnumChatFormatting.GRAY + "[" + EnumChatFormatting.GOLD + "Clicks" + EnumChatFormatting.GRAY + "] " + EnumChatFormatting.RESET + ClickCounterChecker.getClickToDisplay(), 2, 67, 14737632);
+
 		if (!mc.isSingleplayer()) {
-			gui.drawString(mc.fontRendererObj, EnumChatFormatting.GRAY + "[" + EnumChatFormatting.GOLD + "Ping" + EnumChatFormatting.GRAY + "] " + EnumChatFormatting.RESET + getPingInformation(), 2, 67, 14737632);
+			gui.drawString(mc.fontRendererObj, EnumChatFormatting.GRAY + "[" + EnumChatFormatting.GOLD + "Ping" + EnumChatFormatting.GRAY + "] " + EnumChatFormatting.RESET + getPingInformation(), 2, 82, 14737632);
 		}
 	}
 

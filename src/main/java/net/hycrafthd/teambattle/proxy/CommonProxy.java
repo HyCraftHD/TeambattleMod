@@ -29,6 +29,10 @@ public class CommonProxy {
 	}
 
 	// Client Stuff
+	public void registerClickThread() {
+	}
+
+	// Client Stuff
 	public void registerEntityRenders() {
 	}
 
