@@ -55,6 +55,7 @@ tooltip.item.teambattlehangglider=Escape in empyreumatic situations!
 #---------------------------------------
 category.keybinding.teambattle=§4Teambattle§r
 keybinding.keycraftinggui=§9Opens the Craftinggui preview§r
+keybinding.keyattack2=§9Second attack key§r
 
 #---------------------------------------
 #Commands

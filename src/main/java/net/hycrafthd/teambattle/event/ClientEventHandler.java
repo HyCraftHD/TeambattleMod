@@ -21,6 +21,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
@@ -34,12 +35,15 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ClientEventHandler {
+
+	Minecraft mc = Minecraft.getMinecraft();
 
 	@SubscribeEvent
 	public void onFOVUpdate(FOVUpdateEvent event) {
@@ -133,6 +137,13 @@ public class ClientEventHandler {
 			if (event.button.id == 20) {
 				event.gui.mc.displayGuiScreen(new GuiTeambattleSettings());
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onKeyInput(KeyInputEvent event) {
+		if (ClientProxy.attack2.isPressed()) {
+			KeyBinding.onTick(mc.gameSettings.keyBindAttack.getKeyCode());
 		}
 	}
 

@@ -5,6 +5,8 @@ import java.util.Random;
 
 import org.lwjgl.input.Keyboard;
 
+import com.ibm.icu.impl.ICUService.Key;
+
 import net.hycrafthd.teambattle.TBlocks;
 import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.entity.EntityHangGlider;
@@ -30,6 +32,7 @@ public class ClientProxy extends CommonProxy {
 	Minecraft mc = Minecraft.getMinecraft();
 
 	public static KeyBinding craftinggui;
+	public static KeyBinding attack2;
 
 	public void registerModels() {
 
@@ -66,7 +69,9 @@ public class ClientProxy extends CommonProxy {
 
 	public void registerKeybinding() {
 		craftinggui = new KeyBinding("keybinding.keycraftinggui", Keyboard.KEY_K, "category.keybinding.teambattle");
+		attack2 = new KeyBinding("keybinding.keyattack2", Keyboard.KEY_X, "category.keybinding.teambattle");
 		ClientRegistryUtil.registerKeybinding(craftinggui);
+		ClientRegistryUtil.registerKeybinding(attack2);
 	}
 
 	public void registerEntityRenders() {
