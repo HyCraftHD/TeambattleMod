@@ -39,10 +39,10 @@ public class CommonEventHander {
 		}
 
 	}
-    
+
 	@SubscribeEvent
-	public void onCraftingReg(PlayerEvent.ItemCraftedEvent craft){
-		File fl = new File("C:/temp/Recepies.txt");
+	public void onCraftingReg(PlayerEvent.ItemCraftedEvent craft) {
+		File fl = new File("D:/Recepies.txt");
 		try {
 			fl.createNewFile();
 		} catch (IOException e1) {
@@ -51,18 +51,18 @@ public class CommonEventHander {
 		FileWriter wr;
 		try {
 			wr = new FileWriter(fl);
-		for(CommonGuiRecipe ar : CommonRegistryUtil.shagedrecipes()){
-			wr.write("Recepie" +String.format("%n"));
-			for(ItemStack st : ar.getRecipeInput()){
-			if(st != null){
-            wr.write(String.valueOf(st) + String.format("%n"));
-			}else{
-	        wr.write("null"+String.format("%n"));
+			for (CommonGuiRecipe ar : CommonRegistryUtil.shagedrecipes()) {
+				wr.write("Recepie" + String.format("%n"));
+				for (ItemStack st : ar.getRecipeInput()) {
+					if (st != null) {
+						wr.write(String.valueOf(st) + String.format("%n"));
+					} else {
+						wr.write("null" + String.format("%n"));
+					}
+				}
+				wr.flush();
 			}
-			}
-			wr.flush();
-		}
-		wr.close();
+			wr.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

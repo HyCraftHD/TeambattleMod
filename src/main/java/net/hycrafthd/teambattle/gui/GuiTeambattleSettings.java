@@ -19,9 +19,9 @@ public class GuiTeambattleSettings extends GuiScreen {
 	public void initGui() {
 		buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 120, 200, 20, "Done"));
 		buttonList.add(gamma = new GuiSlider(1, width / 2 - 100, height / 4, 200, 20, "Gamma ", "%", 0.0, 1000.0, mc.gameSettings.gammaSetting * 100, true, true));
-		buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 24, 200, 20, "Show entity: " + TConfigs.showEntity));
-		buttonList.add(new GuiButton(3, width / 2 - 100, height / 4 + 48, 200, 20, "Show HUD: " + TConfigs.showHUD));
-		buttonList.add(new GuiButton(4, width / 2 - 100, height / 4 + 72, 200, 20, "Custom sword sound: " + TConfigs.customSwordSound));
+		buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 24, 200, 20, "Show HUD: " + TConfigs.showEntity));
+		buttonList.add(new GuiButton(3, width / 2 - 100, height / 4 + 48, 200, 20, "Show entity: " + TConfigs.showHUD));
+		buttonList.add(new GuiButton(4, width / 2 - 100, height / 4 + 72, 200, 20, "Custom sounds: " + TConfigs.customSwordSound));
 		buttonList.add(new GuiButton(5, width / 2 - 100, height / 4 + 96, 200, 20, "Change fov: " + TConfigs.fovAtBowOrSpeed));
 	}
 
@@ -42,11 +42,11 @@ public class GuiTeambattleSettings extends GuiScreen {
 			break;
 		case 3:
 			TConfigs.updateShowEntity(!TConfigs.showEntity);
-			button.displayString = "Show Entity: " + TConfigs.showEntity;
+			button.displayString = "Show entity: " + TConfigs.showEntity;
 			break;
 		case 4:
 			TConfigs.updateCustomSwordSound(!TConfigs.customSwordSound);
-			button.displayString = "Custom sword sound: " + TConfigs.customSwordSound;
+			button.displayString = "Custom sounds: " + TConfigs.customSwordSound;
 			break;
 		case 5:
 			TConfigs.updateFovAtBowOrSpeed(!TConfigs.fovAtBowOrSpeed);
