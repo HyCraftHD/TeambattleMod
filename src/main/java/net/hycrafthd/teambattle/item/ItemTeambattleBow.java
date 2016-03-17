@@ -75,7 +75,7 @@ public class ItemTeambattleBow extends ItemBow {
 			int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, stack);
 
 			if (j > 0) {
-				entityarrow.setDamage((entityarrow.getDamage() + j * 0.75) - new Random().nextFloat() * new Random().nextFloat());
+				entityarrow.setDamage((entityarrow.getDamage() + j * 0.5) - new Random().nextFloat() * new Random().nextFloat());
 			}
 
 			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, stack);

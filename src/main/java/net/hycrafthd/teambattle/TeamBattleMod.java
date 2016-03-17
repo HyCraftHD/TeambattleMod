@@ -71,6 +71,7 @@ public class TeambattleMod {
 		try {
 			meta.authorList.set(0, EnumChatFormatting.BLUE + meta.authorList.get(0) + EnumChatFormatting.RESET);
 		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 
 		meta.credits = EnumChatFormatting.LIGHT_PURPLE + meta.credits + EnumChatFormatting.RESET;
@@ -78,7 +79,6 @@ public class TeambattleMod {
 		String str = "";
 
 		try {
-
 			URL url = new URL("https://raw.githubusercontent.com/HyCraftHD/TeambattleMod/master/LICENSE");
 			URLConnection con = url.openConnection();
 			InputStream filestream = con.getInputStream();
