@@ -20,7 +20,7 @@ public class TItems {
 	public static Item teambattleingotraw;
 	public static Item teambattleingot;
 
-	public static ToolMaterial teambattletool = EnumHelper.addToolMaterial("TEAMBATTLE", 3, 50000000, 10.0F, 6.0F, 30);
+	public static ToolMaterial teambattletool = EnumHelper.addToolMaterial("TEAMBATTLE", 3, 50000000, 10.0F, 5.5F, 30);
 	public static ArmorMaterial teambattlearmor = EnumHelper.addArmorMaterial("TEAMBATTLE", "", 3125000, new int[] { 3, 8, 6, 3 }, 30);
 
 	public static Item teambattlesword;
