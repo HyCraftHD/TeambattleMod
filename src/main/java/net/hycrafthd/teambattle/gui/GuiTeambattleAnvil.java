@@ -81,7 +81,7 @@ public class GuiTeambattleAnvil extends GuiContainer implements ICrafting {
 						nameField.setFocused(true);
 						nameField.setCursorPosition(p + 2);
 					} catch (InterruptedException e) {
-						TeambattleReference.printExeption(e);
+						e.printStackTrace();
 					}
 				}
 			}, "anvilwaiter").start();

@@ -23,25 +23,5 @@ public class TeambattleReference {
 	public static CommonProxy proxy = new CommonProxy();
 
 	public static final Logger log = LogManager.getLogger(name);
-
-	public static void printExeption(Throwable th) {
-		printModInfo();
-		for (StackTraceElement element : th.getStackTrace()) {
-			log.error(element);
-		}
-	}
-
-	public static void printExeption(String th) {
-		printModInfo();
-		log.error(th);
-	}
-
-	private static void printModInfo() {
-		log.error("--------------------------------------------------------------------------");
-		log.error("TeambattleMod by HyCraftHD!");
-		log.error("An error occured!");
-		log.error("Please report the following stacktrace to the modauthor on github: http://github.hycrafthd.de");
-		log.error("--------------------------------------------------------------------------");
-	}
-
+	
 }

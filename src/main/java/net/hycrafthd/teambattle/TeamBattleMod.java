@@ -89,7 +89,7 @@ public class TeambattleMod {
 				str = str + iterator.next() + "\n";
 			}
 		} catch (Exception e) {
-			TeambattleReference.printExeption(e);
+			e.printStackTrace();
 		}
 
 		String des = "";
