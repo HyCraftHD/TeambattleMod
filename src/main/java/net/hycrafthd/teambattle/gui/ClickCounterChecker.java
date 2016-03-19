@@ -89,10 +89,10 @@ public class ClickCounterChecker {
 			Object obj = field.get(instance);
 			int c = (Integer) obj;
 			if (c > 0) {
-				System.out.println(c);
 				return true;
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		return false;
 
 	}

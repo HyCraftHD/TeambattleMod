@@ -146,7 +146,6 @@ public class ClientEventHandler {
 	public void onKeyInput(KeyInputEvent event) {
 		if (ClientProxy.attack2.isPressed()) {
 			if (!pressed) {
-				System.out.println("test");
 				KeyBinding.onTick(mc.gameSettings.keyBindAttack.getKeyCode());
 				pressed = true;
 			}
