@@ -140,10 +140,18 @@ public class ClientEventHandler {
 		}
 	}
 
+	boolean pressed = false;
+
 	@SubscribeEvent
 	public void onKeyInput(KeyInputEvent event) {
 		if (ClientProxy.attack2.isPressed()) {
-			KeyBinding.onTick(mc.gameSettings.keyBindAttack.getKeyCode());
+			if (!pressed) {
+				System.out.println("test");
+				KeyBinding.onTick(mc.gameSettings.keyBindAttack.getKeyCode());
+				pressed = true;
+			}
+		} else {
+			pressed = false;
 		}
 	}
 }

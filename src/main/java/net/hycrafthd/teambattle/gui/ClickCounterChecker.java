@@ -8,7 +8,7 @@ import java.util.Locale;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
-import net.hycrafthd.teambattle.proxy.ClientProxy;
+import net.hycrafthd.teambattle.asm.util.VisitorHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.relauncher.Side;
@@ -66,7 +66,7 @@ public class ClickCounterChecker {
 
 	private static void keyCheck() {
 		if (Mouse.isCreated() && Keyboard.isCreated()) {
-			if (isKeyPressed(Minecraft.getMinecraft().gameSettings.keyBindAttack) || isKeyPressed(Minecraft.getMinecraft().gameSettings.keyBindUseItem) || isKeyPressed(ClientProxy.attack2)) {
+			if (isKeyPressed(Minecraft.getMinecraft().gameSettings.keyBindAttack) || isKeyPressed(Minecraft.getMinecraft().gameSettings.keyBindUseItem)) {
 				if (!click) {
 					clicks += 1.0D;
 					click = true;
@@ -79,19 +79,20 @@ public class ClickCounterChecker {
 
 	private static boolean isKeyPressed(KeyBinding instance) {
 		try {
-			Field field = KeyBinding.class.getDeclaredField("pressTime");
+			Field field;
+			if (VisitorHelper.useSrgNames()) {
+				field = KeyBinding.class.getDeclaredField("field_151474_i");
+			} else {
+				field = KeyBinding.class.getDeclaredField("pressTime");
+			}
 			field.setAccessible(true);
 			Object obj = field.get(instance);
 			int c = (Integer) obj;
 			if (c > 0) {
+				System.out.println(c);
 				return true;
 			}
-		} catch (
-
-		Exception e)
-
-		{
-		}
+		} catch (Exception e) {}
 		return false;
 
 	}
