@@ -81,13 +81,19 @@ public class ClickCounterChecker {
 		try {
 			Field field = KeyBinding.class.getDeclaredField("pressTime");
 			field.setAccessible(true);
-			int c = (int) field.get(instance);
+			Object obj = field.get(instance);
+			int c = (Integer) obj;
 			if (c > 0) {
 				return true;
 			}
-		} catch (Exception e) {
+		} catch (
+
+		Exception e)
+
+		{
 		}
 		return false;
+
 	}
 
 	public static double getClickToDisplay() {
