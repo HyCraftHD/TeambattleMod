@@ -85,6 +85,10 @@ public class ClientProxy extends CommonProxy {
 		Minecraft.getMinecraft().getSoundHandler().playSound(new PositionedSoundPos(pos, new ResourceLocation(path), soundVolume, soundPitch));
 	}
 
+	public void addTeambattleRecipes() {
+		ClientRegistryUtil.addTeambattleRecipes();
+	}
+
 	public void registerClickThread() {
 		Thread th = new Thread(new Runnable() {
 			@Override

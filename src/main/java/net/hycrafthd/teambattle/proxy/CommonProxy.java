@@ -44,8 +44,11 @@ public class CommonProxy {
 	public void playSoundStayAtLocation(BlockPos pos, String path, float soundVolume, float soundPitch) {
 	}
 
+	// Client Stuff
+	public void addTeambattleRecipes() {
+	}
+
 	public void registerEvents() {
 		MinecraftForge.EVENT_BUS.register(new CommonEventHander());
 	}
-
 }

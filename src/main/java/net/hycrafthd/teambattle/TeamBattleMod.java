@@ -53,6 +53,7 @@ public class TeambattleMod {
 		TeambattleReference.proxy.registerKeybinding();
 		TeambattleReference.proxy.registerColorThread();
 		TeambattleReference.proxy.registerClickThread();
+		TeambattleReference.proxy.addTeambattleRecipes();
 	}
 
 	@EventHandler

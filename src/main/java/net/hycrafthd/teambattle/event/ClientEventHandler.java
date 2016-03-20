@@ -14,12 +14,11 @@ import net.hycrafthd.teambattle.gui.GuiTeambattleOverlay;
 import net.hycrafthd.teambattle.gui.GuiTeambattleSettings;
 import net.hycrafthd.teambattle.proxy.ClientProxy;
 import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
-import net.hycrafthd.teambattle.util.CommonRegistryUtil;
+import net.hycrafthd.teambattle.util.ClientRegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.settings.KeyBinding;
@@ -32,11 +31,9 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
-import net.minecraftforge.client.event.GuiScreenEvent.KeyboardInputEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -148,10 +145,8 @@ public class ClientEventHandler {
 						Slot slot = container.getSlotUnderMouse();
 						if (slot.getStack() != null) {
 							ItemStack stack = slot.getStack();
-							System.out.println(stack);
-							for (CommonGuiRecipe guirecipe : CommonRegistryUtil.shagedrecipes()) {
+							for (CommonGuiRecipe guirecipe : ClientRegistryUtil.getGuirecipes()) {
 								if (guirecipe.getRecipeOutput() != null && guirecipe.getRecipeOutput().isItemEqual(stack)) {
-									System.out.println(guirecipe.getRecipeOutput() + " : " + stack);
 									mc.displayGuiScreen(new GuiCraftingRecipes(guirecipe.getRecipeOutput(), guirecipe.getRecipeInput(), mc.currentScreen));
 									break;
 								}
