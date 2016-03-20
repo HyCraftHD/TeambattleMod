@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
@@ -25,7 +26,7 @@ public class GuiCraftingRecipes extends GuiScreen {
 	}
 
 	public void keyTyped(char typedChar, int keyCode) throws IOException {
-		if (keyCode == 1) {
+		if (keyCode == 1 || keyCode == this.mc.gameSettings.keyBindInventory.getKeyCode()) {
 			mc.displayGuiScreen(lastgui);
 			if (mc.currentScreen == null) {
 				mc.setIngameFocus();

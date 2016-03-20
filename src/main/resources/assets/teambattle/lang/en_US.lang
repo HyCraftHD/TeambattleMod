@@ -48,7 +48,7 @@ item.teambattlebackpack.name=§9Teambattle Backpack§r
 tooltip.item.teambattlebackpack=Your Inventory is full?#break#Try this!
 
 item.teambattlehangglider.name=§9Teambattle Hangglider§r
-tooltip.item.teambattlehangglider=Escape in empyreumatic situations!
+tooltip.item.teambattlehangglider=Escape in dangerous situations!
 
 #---------------------------------------
 #Keybindings
