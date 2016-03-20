@@ -1,5 +1,7 @@
 package net.hycrafthd.teambattle.util;
 
+import java.io.ObjectInputStream.GetField;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,6 +11,7 @@ import com.google.common.collect.Lists;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.hycrafthd.teambattle.recipe.CommonGuiRecipe;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -17,6 +20,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -24,6 +28,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class CommonRegistryUtil {
 
@@ -130,9 +135,30 @@ public class CommonRegistryUtil {
 					ar[i] = rs.get(i);
 				}
 				stacks.add(new CommonGuiRecipe(ar, r.getRecipeOutput()));
+			} else if (r instanceof ShapelessOreRecipe) {
+				List<Object> rs = ((ShapelessOreRecipe) r).getInput();
+				ItemStack[] ar = new ItemStack[rs.size()];
+				for (int i = 0; i < ar.length; i++) {
+					if (rs.get(i) instanceof ItemStack) {
+						ar[i] = (((ItemStack) rs.get(i)).copy());
+					} else if (rs.get(i) instanceof Item) {
+						ar[i] = (new ItemStack((Item) rs.get(i)));
+					} else if (rs.get(i) instanceof Block) {
+						ar[i] = (new ItemStack((Block) rs.get(i)));
+					} else if (rs.get(i) instanceof String) {
+						ar[i] = OreDictionary.getOres((String) rs.get(i)).get(0);
+					} else {
+						ar[i] = null;
+					}
+				}
+				stacks.add(new CommonGuiRecipe(ar, r.getRecipeOutput()));
 			} else if (r instanceof ShapedOreRecipe) {
-				ShapedOreRecipe rep = (ShapedOreRecipe) r;
-				stacks.add(new CommonGuiRecipe(matches4(rep), rep.getRecipeOutput()));
+				try {
+					ShapedOreRecipe rep = (ShapedOreRecipe) r;
+					stacks.add(new CommonGuiRecipe(matches4(rep), rep.getRecipeOutput()));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 		}
 		return stacks;
@@ -146,7 +172,7 @@ public class CommonRegistryUtil {
 					return st;
 				}
 
-				ItemStack[] st2 = checkMatch(re, i, j, true);
+				ItemStack[] st2 = checkMatch(re, i, j, false);
 				if (st2 != null) {
 					return st2;
 				}
@@ -156,9 +182,6 @@ public class CommonRegistryUtil {
 		return null;
 	}
 
-	/**
-	 * Checks if the region of a crafting inventory is match for the recipe.
-	 */
 	private static ItemStack[] checkMatch(ShapedRecipes re, int p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
 		ItemStack[] stacks = new ItemStack[9];
 
@@ -182,59 +205,233 @@ public class CommonRegistryUtil {
 		return stacks;
 	}
 
-	public static ItemStack[] matches4(ShapedOreRecipe inv) {
-		for (int x = 0; x <= inv.MAX_CRAFT_GRID_WIDTH - inv.getRecipeSize(); x++) {
-			for (int y = 0; y <= inv.MAX_CRAFT_GRID_HEIGHT - inv.getRecipeSize(); ++y) {
-				ItemStack[] st = checkMatch4(inv, x, y, false);
+	public static ItemStack[] matches4(ShapedOreRecipe re) {
+		int width = (Integer) getField(ShapedOreRecipe.class, re, "width");
+		int height = (Integer) getField(ShapedOreRecipe.class, re, "height");
+		for (int x = 0; x <= 3 - width; x++) {
+			for (int y = 0; y <= 3 - height; ++y) {
+				ItemStack[] st = checkMatch4(re, x, y, false);
 				if (st != null) {
 					return st;
 				}
 
-				ItemStack[] sts = checkMatch4(inv, x, y, true);
-				if (sts != null) {
-					return sts;
+				ItemStack[] st2 = checkMatch4(re, x, y, true);
+				if (st2 != null) {
+					return st2;
 				}
 			}
 		}
-
 		return null;
+
 	}
 
-	public static ItemStack[] checkMatch4(ShapedOreRecipe inv, int startX, int startY, boolean mirror) {
-		ArrayList<ItemStack> stack = new ArrayList<ItemStack>();
-		for (int x = 0; x < inv.MAX_CRAFT_GRID_WIDTH; x++) {
-			for (int y = 0; y < inv.MAX_CRAFT_GRID_HEIGHT; y++) {
+	public static ItemStack[] checkMatch4(ShapedOreRecipe re, int startX, int startY, boolean mirror) {
+		ItemStack[] stacks = new ItemStack[9];
+		int width = (Integer) getField(ShapedOreRecipe.class, re, "width");
+		int height = (Integer) getField(ShapedOreRecipe.class, re, "height");
+		for (int x = 0; x < 3; x++) {
+			for (int y = 0; y < 3; y++) {
 				int subX = x - startX;
 				int subY = y - startY;
+				ItemStack itemstack;
 				Object target = null;
 
-				if (subX >= 0 && subY >= 0 && subX < inv.getRecipeSize() && subY < inv.getRecipeSize()) {
+				if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
 					if (mirror) {
-						target = inv.getInput()[inv.getRecipeSize() - subX - 1 + subY * inv.getRecipeSize()];
+						target = re.getInput()[width - subX - 1 + subY * width];
 					} else {
-						target = inv.getInput()[subX + subY * inv.getRecipeSize()];
+						target = re.getInput()[subX + subY * width];
 					}
 				}
 
 				if (target instanceof ItemStack) {
-					stack.add((ItemStack) target);
-				} else if (target instanceof List) {
-
-					Iterator<ItemStack> itr = ((List<ItemStack>) target).iterator();
-					while (itr.hasNext()) {
-						stack.add(itr.next());
-					}
+					itemstack = (((ItemStack) target).copy());
+				} else if (target instanceof Item) {
+					itemstack = (new ItemStack((Item) target));
+				} else if (target instanceof Block) {
+					itemstack = (new ItemStack((Block) target));
+				} else if (target instanceof String) {
+					itemstack = OreDictionary.getOres((String) target).get(0);
+				} else {
+					itemstack = null;
 				}
+				stacks[(x + (y * 3))] = itemstack;
+
+				/*
+				 * if (target instanceof ItemStack) { if
+				 * (!OreDictionary.itemMatches((ItemStack) target, slot, false))
+				 * { return false; } } else if (target instanceof List) {
+				 * boolean matched = false;
+				 * 
+				 * Iterator<ItemStack> itr = ((List<ItemStack>)
+				 * target).iterator(); while (itr.hasNext() && !matched) {
+				 * matched = OreDictionary.itemMatches(itr.next(), slot, false);
+				 * }
+				 * 
+				 * if (!matched) { return false; } } else if (target == null &&
+				 * slot != null) { return false; }
+				 */
 			}
 		}
 
-		ItemStack[] sta = new ItemStack[stack.size()];
-		int v = 0;
-		for (ItemStack st : stack) {
-			sta[v] = st;
-			v++;
+		return stacks;
+	}
+
+	// public static ItemStack[] matches4(ShapedOreRecipe re) {
+	// int width = (Integer) getField(ShapedOreRecipe.class, re, "width");
+	// int height = (Integer) getField(ShapedOreRecipe.class, re, "height");
+	// for (int i = 0; i <= 3 - width; ++i) {
+	// for (int j = 0; j <= 3 - height; ++j) {
+	// ItemStack[] st = checkMatch4(re, i, j, true);
+	// if (st != null) {
+	// return st;
+	// }
+	//
+	// ItemStack[] st2 = checkMatch4(re, i, j, false);
+	// if (st2 != null) {
+	// return st2;
+	// }
+	// }
+	// }
+	//
+	// return null;
+	// }
+	//
+	// /**
+	// * Checks if the region of a crafting inventory is match for the recipe.
+	// */
+	// private static ItemStack[] checkMatch4(ShapedOreRecipe re, int
+	// p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
+	// ItemStack[] stacks = new ItemStack[9];
+	//
+	// int width = (Integer) getField(ShapedOreRecipe.class, re, "width");
+	// int height = (Integer) getField(ShapedOreRecipe.class, re, "height");
+	//
+	// for (int i = 0; i < 3; ++i) {
+	// for (int j = 0; j < 3; ++j) {
+	// int k = i - p_77573_2_;
+	// int l = j - p_77573_3_;
+	// ItemStack itemstack = null;
+	//
+	// if (k >= 0 && l >= 0 && k < width && l < height) {
+	// System.out.println(re.getRecipeOutput() + " : " + (width - k - 1 + l *
+	// height) + " : " + re.getInput().length);
+	// /*if (p_77573_4_) {
+	//
+	// Object obj = re.getInput()[width - k - 1 + l * height];
+	//
+	//
+	// if (obj instanceof ItemStack) {
+	// itemstack = (((ItemStack) obj).copy());
+	// } else if (obj instanceof Item) {
+	// itemstack = (new ItemStack((Item) obj));
+	// } else if (obj instanceof Block) {
+	// itemstack = (new ItemStack((Block) obj));
+	// } else if (obj instanceof String) {
+	// itemstack = OreDictionary.getOres((String) obj).get(0);
+	// } else {
+	// itemstack = null;
+	// }
+	// } else {
+	// Object obj = re.getInput()[k + l * width];
+	//
+	// if (obj instanceof ItemStack) {
+	// itemstack = (((ItemStack) obj).copy());
+	// } else if (obj instanceof Item) {
+	// itemstack = (new ItemStack((Item) obj));
+	// } else if (obj instanceof Block) {
+	// itemstack = (new ItemStack((Block) obj));
+	// } else if (obj instanceof String) {
+	// itemstack = OreDictionary.getOres((String) obj).get(0);
+	// } else {
+	// itemstack = null;
+	// }
+	// }*/
+	// }
+	//
+	// stacks[(i + (j * 3))] = itemstack;
+	// }
+	// }
+	// return stacks;
+	// }
+
+	// public static ItemStack[] matches4(ShapedOreRecipe inv) {
+	// int width = (Integer)getField(ShapedOreRecipe.class, inv, "width");
+	// int height = (Integer)getField(ShapedOreRecipe.class, inv, "height");
+	// for (int x = 0; x <= inv.MAX_CRAFT_GRID_WIDTH - width; x++) {
+	// for (int y = 0; y <= inv.MAX_CRAFT_GRID_HEIGHT - height; ++y) {
+	// System.out.println(inv.getRecipeOutput() + " : " + width + " : " + height
+	// + " : ");
+	// for(Object obj : inv.getInput()) {
+	// System.out.println(obj);
+	// }
+	// /*ItemStack[] st = checkMatch4(inv, x, y, false);
+	// if (st != null) {
+	// return st;
+	// }
+	//
+	// ItemStack[] sts = checkMatch4(inv, x, y, true);
+	// if (sts != null) {
+	// return sts;
+	// }*/
+	// }
+	// }
+	//
+	// return null;
+	// }
+	//
+	// public static ItemStack[] checkMatch4(ShapedOreRecipe inv, int startX,
+	// int startY, boolean mirror) {
+	// ArrayList<ItemStack> stack = new ArrayList<ItemStack>();
+	// for (int x = 0; x < inv.MAX_CRAFT_GRID_WIDTH; x++) {
+	// for (int y = 0; y < inv.MAX_CRAFT_GRID_HEIGHT; y++) {
+	// int subX = x - startX;
+	// int subY = y - startY;
+	// Object target = null;
+	//
+	// if (subX >= 0 && subY >= 0 && subX < inv.getRecipeSize() && subY <
+	// inv.getRecipeSize()) {
+	// if (mirror) {
+	// target = inv.getInput()[inv.getRecipeSize() - subX - 1 + subY *
+	// inv.getRecipeSize()];
+	// } else {
+	// int with = (Integer)getField(ShapedOreRecipe.class, inv, "width");
+	// System.out.println(inv.getRecipeOutput() + " : " + with + " : " +
+	// inv.getInput().length + " : " +(subX + subY * with) + " : " +
+	// inv.getInput().length);
+	// //target = inv.getInput()[subX + subY * with];
+	// }
+	// }
+	//
+	// if (target instanceof ItemStack) {
+	// stack.add((ItemStack) target);
+	// } else if (target instanceof List) {
+	//
+	// Iterator<ItemStack> itr = ((List<ItemStack>) target).iterator();
+	// while (itr.hasNext()) {
+	// stack.add(itr.next());
+	// }
+	// }
+	// }
+	// }
+	//
+	// ItemStack[] sta = new ItemStack[stack.size()];
+	// int v = 0;
+	// for (ItemStack st : stack) {
+	// sta[v] = st;
+	// v++;
+	// }
+	// return sta;
+	// }
+
+	private static Object getField(Class clazz, Object obj, String fieldstr) {
+		try {
+			Field field = clazz.getDeclaredField(fieldstr);
+			field.setAccessible(true);
+			return field.get(obj);
+		} catch (Exception ex) {
+			return null;
 		}
-		return sta;
 	}
 
 	public static List<CommonGuiRecipe> getGuirecipes() {

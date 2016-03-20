@@ -19,6 +19,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.settings.KeyBinding;
@@ -31,9 +32,11 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.GuiScreenEvent.KeyboardInputEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -83,28 +86,6 @@ public class ClientEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onTick(TickEvent event) {
-		Minecraft mc = Minecraft.getMinecraft();
-		if (mc.currentScreen != null && mc.currentScreen instanceof GuiContainer) {
-			GuiContainer container = (GuiContainer) mc.currentScreen;
-			if (Keyboard.isKeyDown(ClientProxy.craftinggui.getKeyCode())) {
-				if (container.getSlotUnderMouse() != null) {
-					Slot slot = container.getSlotUnderMouse();
-					if (slot.getStack() != null) {
-						ItemStack stack = slot.getStack();
-						for (CommonGuiRecipe guirecipe : CommonRegistryUtil.shagedrecipes()) {
-							if (guirecipe.getRecipeOutput() != null && guirecipe.getRecipeOutput().isItemEqual(stack)) {
-								mc.displayGuiScreen(new GuiCraftingRecipes(guirecipe.getRecipeOutput(), guirecipe.getRecipeInput(), mc.currentScreen));
-								return;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
 	public void onPlayerBodyRender(PlayerBodyRenderEvent event) {
 		final AbstractClientPlayer player = event.player;
 		if (player.riddenByEntity != null && player.riddenByEntity instanceof EntityHangGlider && !player.onGround) {
@@ -140,17 +121,47 @@ public class ClientEventHandler {
 		}
 	}
 
-	boolean pressed = false;
+	boolean attackpressed = false;
 
 	@SubscribeEvent
 	public void onKeyInput(KeyInputEvent event) {
 		if (ClientProxy.attack2.isPressed()) {
-			if (!pressed) {
+			if (!attackpressed) {
+				attackpressed = true;
 				KeyBinding.onTick(mc.gameSettings.keyBindAttack.getKeyCode());
-				pressed = true;
 			}
 		} else {
-			pressed = false;
+			attackpressed = false;
+		}
+	}
+
+	boolean openpressed = false;
+
+	@SubscribeEvent
+	public void onTick(TickEvent event) {
+		if (mc.currentScreen != null && mc.currentScreen instanceof GuiContainer) {
+			GuiContainer container = (GuiContainer) mc.currentScreen;
+			if (Keyboard.isKeyDown(ClientProxy.craftinggui.getKeyCode())) {
+				if (!openpressed) {
+					openpressed = true;
+					if (container.getSlotUnderMouse() != null) {
+						Slot slot = container.getSlotUnderMouse();
+						if (slot.getStack() != null) {
+							ItemStack stack = slot.getStack();
+							System.out.println(stack);
+							for (CommonGuiRecipe guirecipe : CommonRegistryUtil.shagedrecipes()) {
+								if (guirecipe.getRecipeOutput() != null && guirecipe.getRecipeOutput().isItemEqual(stack)) {
+									System.out.println(guirecipe.getRecipeOutput() + " : " + stack);
+									mc.displayGuiScreen(new GuiCraftingRecipes(guirecipe.getRecipeOutput(), guirecipe.getRecipeInput(), mc.currentScreen));
+									break;
+								}
+							}
+						}
+					}
+				}
+			} else {
+				openpressed = false;
+			}
 		}
 	}
 }
