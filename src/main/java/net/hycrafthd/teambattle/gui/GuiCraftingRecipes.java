@@ -1,11 +1,10 @@
 package net.hycrafthd.teambattle.gui;
 
 import java.io.IOException;
+
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -47,20 +46,8 @@ public class GuiCraftingRecipes extends GuiScreen {
 		int j = (this.height - this.ySize) / 2;
 
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
-		RenderHelper.enableGUIStandardItemLighting();
-		GlStateManager.enableRescaleNormal();
 
 		this.drawItemStack(stack, i + 124, j + 35);
-
-		if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
-			this.drawHoveringText(stack.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
-			RenderHelper.enableGUIStandardItemLighting();
-			GlStateManager.enableRescaleNormal();
-		}
-
-		if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
-			this.drawHoveringText(stack.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
-		}
 
 		if (input != null) {
 			for (int k = 0; k < input.length; k++) {
@@ -72,9 +59,12 @@ public class GuiCraftingRecipes extends GuiScreen {
 					int iy = j + inputrender.getY() + 17;
 
 					this.drawItemStack(current, ix, iy);
-
 				}
 			}
+		}
+
+		if ((i + 124) < mouseX && (i + 124) + 16 > mouseX && j + 35 < mouseY && (j + 35) + 16 > mouseY) {
+			this.drawHoveringText(stack.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
 		}
 
 		if (input != null) {
@@ -88,10 +78,8 @@ public class GuiCraftingRecipes extends GuiScreen {
 
 					if (ix < mouseX && ix + 16 > mouseX && iy < mouseY && iy + 16 > mouseY) {
 						this.drawHoveringText(current.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
-						break;
 					}
 				}
-				RenderHelper.enableGUIStandardItemLighting();
 			}
 		}
 
@@ -101,6 +89,8 @@ public class GuiCraftingRecipes extends GuiScreen {
 		if (stack.getItemDamage() > 15) {
 			stack.setItemDamage(0);
 		}
+		RenderHelper.enableGUIStandardItemLighting();
+		GlStateManager.enableRescaleNormal();
 		this.itemRender.renderItemIntoGUI(stack, x, y);
 	}
 
