@@ -2,7 +2,7 @@
 ####Hier findest du den Sourcecode zu meiner Teambattlemod!
 #####Version History / Releases
 
-- Version 0.1 (unreleased) (1.8.9 - 11.15.1.1722)
+- Version 1.0 (https://github.com/HyCraftHD/TeambattleMod/releases/tag/v1.0) (1.8.9 - 11.15.1.1722)
 
 #####Achte bitte auf die Lizenz!
 
