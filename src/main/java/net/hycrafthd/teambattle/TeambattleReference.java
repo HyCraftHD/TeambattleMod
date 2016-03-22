@@ -12,7 +12,7 @@ public class TeambattleReference {
 
 	public static final String modid = "teambattle";
 	public static final String name = "Teambattle Mod";
-	public static final String version = "1.1(prerelease1)";
+	public static final String version = "1.1(prerelease2)";
 
 	public static final String resource = "teambattle:";
 
