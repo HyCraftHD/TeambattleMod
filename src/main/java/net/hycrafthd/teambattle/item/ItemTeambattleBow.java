@@ -2,6 +2,7 @@ package net.hycrafthd.teambattle.item;
 
 import java.util.Random;
 
+import net.hycrafthd.teambattle.TItems;
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
@@ -43,7 +44,16 @@ public class ItemTeambattleBow extends ItemBow {
 	}
 
 	public int getItemEnchantability() {
-		return 30;
+		return TItems.teambattletool.getEnchantability();
+	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		if (toRepair != null && repair != null && toRepair.getItem() != null && repair.getItem() != null) {
+			if (toRepair.getItem() == this && repair.getItem() == TItems.teambattleingot) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityPlayer playerIn, int timeLeft) {

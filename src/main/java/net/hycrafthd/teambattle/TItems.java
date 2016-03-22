@@ -10,6 +10,7 @@ import net.hycrafthd.teambattle.item.ItemTeambattleShovel;
 import net.hycrafthd.teambattle.item.ItemTeambattleSword;
 import net.hycrafthd.teambattle.util.CommonRegistryUtil;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
@@ -20,8 +21,8 @@ public class TItems {
 	public static Item teambattleingotraw;
 	public static Item teambattleingot;
 
-	public static ToolMaterial teambattletool = EnumHelper.addToolMaterial("TEAMBATTLE", 3, 50000000, 10.0F, 5.5F, 30);
-	public static ArmorMaterial teambattlearmor = EnumHelper.addArmorMaterial("TEAMBATTLE", "", 3125000, new int[] { 3, 8, 6, 3 }, 30);
+	public static ToolMaterial teambattletool;
+	public static ArmorMaterial teambattlearmor;
 
 	public static Item teambattlesword;
 	public static Item teambattlepickaxe;
@@ -32,18 +33,25 @@ public class TItems {
 	public static Item teambattlechestplate;
 	public static Item teambattleleggings;
 	public static Item teambattleboots;
-	
+
 	public static Item teambattlebackpack;
 	public static Item teambattlehangglider;
-	
+
 	public TItems() {
 		init();
 		register();
 	}
 
 	private void init() {
+
 		teambattleingotraw = new ItemTeambattleIngot().setUnlocalizedName("teambattleingotraw").setCreativeTab(TeambattleMod.tab);
 		teambattleingot = new ItemTeambattleIngot().setUnlocalizedName("teambattleingot").setCreativeTab(TeambattleMod.tab);
+
+		teambattletool = EnumHelper.addToolMaterial("TEAMBATTLE", 3, 50000000, 10.0F, 5.0F, 25);
+		teambattlearmor = EnumHelper.addArmorMaterial("TEAMBATTLE", "", 3125000, new int[] { 3, 8, 6, 3 }, 25);
+
+		teambattletool.setRepairItem(new ItemStack(teambattleingot));
+		teambattlearmor.customCraftingMaterial = teambattleingot;
 
 		teambattlesword = new ItemTeambattleSword(teambattletool).setUnlocalizedName("teambattlesword").setCreativeTab(TeambattleMod.tab);
 		teambattlepickaxe = new ItemTeambattlePickaxe(teambattletool).setUnlocalizedName("teambattlepickaxe").setCreativeTab(TeambattleMod.tab);
@@ -54,7 +62,7 @@ public class TItems {
 		teambattlechestplate = new ItemTeambattleArmor(teambattlearmor, 1).setUnlocalizedName("teambattlechestplate").setCreativeTab(TeambattleMod.tab);
 		teambattleleggings = new ItemTeambattleArmor(teambattlearmor, 2).setUnlocalizedName("teambattleleggings").setCreativeTab(TeambattleMod.tab);
 		teambattleboots = new ItemTeambattleArmor(teambattlearmor, 3).setUnlocalizedName("teambattleboots").setCreativeTab(TeambattleMod.tab);
-		
+
 		teambattlebackpack = new ItemTeambattleBackpack().setUnlocalizedName("teambattlebackpack").setCreativeTab(TeambattleMod.tab);
 		teambattlehangglider = new ItemTeambattleHangglider().setUnlocalizedName("teambattlehangglider").setCreativeTab(TeambattleMod.tab);
 	}
@@ -72,7 +80,7 @@ public class TItems {
 		CommonRegistryUtil.registerItem(teambattlechestplate);
 		CommonRegistryUtil.registerItem(teambattleleggings);
 		CommonRegistryUtil.registerItem(teambattleboots);
-		
+
 		CommonRegistryUtil.registerItem(teambattlebackpack);
 		CommonRegistryUtil.registerItem(teambattlehangglider);
 	}
