@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import net.hycrafthd.teambattle.TeambattleReference;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
@@ -23,6 +22,10 @@ public class GuiCraftingRecipes extends GuiScreen {
 		this.stack = stack;
 		this.input = input;
 		this.lastgui = lastgui;
+	}
+	
+	public boolean doesGuiPauseGame() {
+		return false;
 	}
 
 	public void keyTyped(char typedChar, int keyCode) throws IOException {
