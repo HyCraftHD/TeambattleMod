@@ -20,7 +20,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "release-1.0"
+version = "prerelease-1.1"
 group= "net.hycrafthd.teambattle" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "teambattle"
 
