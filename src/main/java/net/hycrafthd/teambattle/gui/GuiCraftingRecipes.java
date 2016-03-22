@@ -16,8 +16,8 @@ public class GuiCraftingRecipes extends GuiScreen {
 	private ItemStack stack;
 	private ItemStack[] input;
 	private GuiScreen lastgui;
-	private int xSize = 175;
-	private int ySize = 88;
+	private int xSize = 176;
+	private int ySize = 89;
 
 	public GuiCraftingRecipes(ItemStack stack, ItemStack[] input, GuiScreen lastgui) {
 		this.stack = stack;
