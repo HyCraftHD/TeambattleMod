@@ -1,5 +1,6 @@
 package net.hycrafthd.teambattle.asm.util;
 
+import net.hycrafthd.teambattle.util.ReflectionUtil;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 
 public class FieldMatcher {
@@ -20,7 +21,7 @@ public class FieldMatcher {
 			return false;
 		if (fieldName.equals(mcpName))
 			return true;
-		if (!VisitorHelper.useSrgNames())
+		if (!ReflectionUtil.useSrgNames())
 			return false;
 		String mapped = FMLDeobfuscatingRemapper.INSTANCE.mapFieldName(clsName, fieldName, fieldDesc);
 		return mapped.equals(srgName);

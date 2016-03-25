@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Iterator;
 
 import net.hycrafthd.teambattle.creativetab.CreativeTabTeambattle;
@@ -81,9 +79,7 @@ public class TeambattleMod {
 		String str = "";
 
 		try {
-			URL url = new URL("https://raw.githubusercontent.com/HyCraftHD/TeambattleMod/master/LICENSE");
-			URLConnection con = url.openConnection();
-			InputStream filestream = con.getInputStream();
+			InputStream filestream = TeambattleMod.class.getResourceAsStream("/LICENSE.TXT");
 			Reader reader = new InputStreamReader(filestream);
 			BufferedReader lineReader = new BufferedReader(reader);
 			Iterator<String> iterator = lineReader.lines().iterator();
@@ -106,7 +102,7 @@ public class TeambattleMod {
 			license = license + EnumChatFormatting.GREEN + chars + EnumChatFormatting.RESET;
 		}
 
-		meta.description = des + "\n\n" + EnumChatFormatting.DARK_RED + "-------------------LICENSE-------------------" + EnumChatFormatting.RESET + "\n\n" + license;
+		meta.description = des + "\n\n" + EnumChatFormatting.DARK_RED + "-----------------LICENSE-----------------" + EnumChatFormatting.RESET + "\n\n" + license;
 
 	}
 

@@ -9,11 +9,8 @@ import net.minecraft.item.ItemSword;
 
 public class ItemTeambattleSword extends ItemSword {
 
-	private final ToolMaterial material;
-
 	public ItemTeambattleSword(ToolMaterial teambattletool) {
 		super(teambattletool);
-		this.material = teambattletool;
 	}
 
 	@Override

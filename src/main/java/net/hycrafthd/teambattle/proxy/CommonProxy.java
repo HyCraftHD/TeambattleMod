@@ -1,6 +1,6 @@
 package net.hycrafthd.teambattle.proxy;
 
-import net.hycrafthd.teambattle.event.CommonEventHander;
+import net.hycrafthd.teambattle.event.CommonEventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
@@ -49,6 +49,6 @@ public class CommonProxy {
 	}
 
 	public void registerEvents() {
-		MinecraftForge.EVENT_BUS.register(new CommonEventHander());
+		MinecraftForge.EVENT_BUS.register(new CommonEventHandler());
 	}
 }

@@ -2,8 +2,8 @@ package net.hycrafthd.teambattle.command;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
-import net.minecraft.command.CommandToggleDownfall;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class CommandEnderchest extends CommandBase {
@@ -32,8 +32,11 @@ public class CommandEnderchest extends CommandBase {
 
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-		EntityPlayer player = (EntityPlayer) sender;
-		player.displayGUIChest(player.getInventoryEnderChest());
+		Entity entity = sender.getCommandSenderEntity();
+		if (entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+			player.displayGUIChest(player.getInventoryEnderChest());
+		}
 	}
 
 }
